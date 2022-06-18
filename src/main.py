@@ -1,10 +1,6 @@
 from argparse import ArgumentParser
-import numpy as np
 import os
-from typing import List
 
-from src.couplings import *
-from src.coefficients import *
 from src.solver import Solver
 
 def main(args) -> None:

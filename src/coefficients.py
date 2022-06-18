@@ -10,55 +10,12 @@ def coefPlus(
     H: float
 ) -> float:
 
-    aux0=(((3.*alpha)+((9.*beta)+(6.*(H*((2.+S)*(np.sqrt(delta)))))))-\
-    delta)*(delta**2)
-    aux1=(3.*(beta*delta))+(2.*((alpha+(H*((5.+(2.*S))*(np.sqrt(delta)))))*\
-    delta))
-    aux2=(-4.*(H*((2.+S)*(beta*(np.sqrt(delta))))))+(((alpha+beta)*delta)+(\
-    2.*(H*((5.+S)*(delta**1.5)))))
-    aux3=(beta**2)+((2.*(H*((2.+S)*(beta*(np.sqrt(delta))))))+(-2.*(H*(\
-    delta**1.5))))
-    aux4=delta*((H*((11.*H)+((15.*(H*S))+(-3.*(np.sqrt(delta))))))+(-3.*\
-    epsilon))
-    aux5=(-24.*((H**2)*((3.+S)*(delta**2))))+((6.*(alpha*aux3))+(4.*(beta*\
-    aux4)))
-    aux6=(3.*(beta**3.))+((6.*(H*((5.+(2.*S))*((beta**2)*(np.sqrt(delta))))\
-    ))+aux5)
-    aux7=alpha*(((2.*(beta*delta))+(2.*(H*((5.+(2.*S))*(delta**1.5)))))-(\
-    beta**2))
-    aux8=(4.*(H*((4.+S)*(beta*(delta**1.5)))))+(aux7+(4.*((delta**2)*((6.*\
-    ((H**2)*(1.+S)))-epsilon))))
-    aux9=(-2.*(H*((2.+S)*((beta**2)*(np.sqrt(delta))))))+(((alpha**2)*\
-    delta)+(((beta**2)*delta)+aux8))
-    aux10=((3.*((2.+S)*alpha))+((H*((11.+(15.*S))*(np.sqrt(delta))))+(-3.*\
-    delta)))*(delta**1.5)
-    aux11=(-12.*(H*((5.+(2.*S))*(beta*(delta**1.5)))))+((-4.*(H*aux10))+(\
-    12.*((delta**2)*epsilon)))
-    aux12=(-3.*((alpha**2)*delta))+((-12.*(alpha*(beta*delta)))+((-9.*((\
-    beta**2)*delta))+aux11))
-    aux13=4.*(delta*((H*((11.*H)+((15.*(H*S))+(2.*(np.sqrt(delta))))))+(-3.\
-    *epsilon)))
-    aux14=alpha*((3.*(beta**2))+((6.*(H*((5.+(2.*S))*(beta*(np.sqrt(delta))\
-    ))))+aux13))
-    aux15=(delta**1.5)*((2.*(H*((3.*H)+((9.*(H*S))+(np.sqrt(delta))))))-((\
-    9.+S)*epsilon))
-    aux16=aux14+((12.*(beta*(delta*((6.*((H**2)*(1.+S)))-epsilon))))+(8.*(\
-    H*aux15)))
-    aux17=(3.*((alpha**2)*(beta+(2.*(H*((2.+S)*(np.sqrt(delta))))))))+((6.*\
-    (H*((3.+S)*((beta**2)*(np.sqrt(delta))))))+aux16)
-    aux18=(-64.*((gamma**3.)*((delta**3.)*((beta**3.)+aux12))))+(512.*((\
-    delta**6.)*((alpha**3.)+((beta**3.)+aux17))))
-    aux19=(-256.*(gamma*((delta**5.)*((3.*((alpha**2)*beta))+aux6))))+((-\
-    384.*((gamma**2)*((delta**4.)*(aux9-(beta**3.)))))+aux18)
-    aux20=(96.*((gamma**4.)*((delta**3.)*(aux2-(beta*((2.*alpha)+(3.*beta)\
-    ))))))+aux19
-    aux21=(12.*((gamma**7.)*(delta*(delta-beta))))+((-48.*((gamma**5.)*((\
-    delta**2)*(aux1-(beta**2)))))+aux20)
-    aux22=(gamma**9.)+((-6.*((gamma**8.)*delta))+((8.*((gamma**6.)*aux0))+\
-    aux21))
-    output=0.0000406901*((H**-3.)*((delta**-7.5)*aux22))
+    num = 4096*alpha**4*delta**8+16384*alpha**3*beta*delta**8+24576*alpha**2*beta**2*delta**8+16384*alpha*beta**3*delta**8+4096*beta**4*delta**8+98304*alpha**2*delta**9*epsilon+196608*alpha*beta*delta**9*epsilon+98304*beta**2*delta**9*epsilon+65536*delta**10*epsilon**2+8192*alpha**3*beta*delta**7*gamma+24576*alpha**2*beta**2*delta**7*gamma+24576*alpha*beta**3*delta**7*gamma+8192*beta**4*delta**7*gamma+98304*alpha*beta*delta**8*epsilon*gamma+98304*beta**2*delta**8*epsilon*gamma+6144*alpha**2*beta**2*delta**6*gamma**2+12288*alpha*beta**3*delta**6*gamma**2+6144*beta**4*delta**6*gamma**2+4096*alpha**3*delta**7*gamma**2+12288*alpha**2*beta*delta**7*gamma**2+12288*alpha*beta**2*delta**7*gamma**2+4096*beta**3*delta**7*gamma**2+24576*beta**2*delta**7*epsilon*gamma**2+49152*alpha*delta**8*epsilon*gamma**2+49152*beta*delta**8*epsilon*gamma**2+2048*alpha*beta**3*delta**5*gamma**3+2048*beta**4*delta**5*gamma**3+2048*alpha**3*delta**6*gamma**3+12288*alpha**2*beta*delta**6*gamma**3+18432*alpha*beta**2*delta**6*gamma**3+8192*beta**3*delta**6*gamma**3+24576*alpha*delta**7*epsilon*gamma**3+49152*beta*delta**7*epsilon*gamma**3+256*beta**4*delta**4*gamma**4+3072*alpha**2*beta*delta**5*gamma**4+9216*alpha*beta**2*delta**5*gamma**4+6144*beta**3*delta**5*gamma**4+1536*alpha**2*delta**6*gamma**4+3072*alpha*beta*delta**6*gamma**4+1536*beta**2*delta**6*gamma**4+12288*beta*delta**6*epsilon*gamma**4+6144*delta**7*epsilon*gamma**4+1536*alpha*beta**2*delta**4*gamma**5+2048*beta**3*delta**4*gamma**5+1536*alpha**2*delta**5*gamma**5+4608*alpha*beta*delta**5*gamma**5+3072*beta**2*delta**5*gamma**5+6144*delta**6*epsilon*gamma**5+256*beta**3*delta**3*gamma**6+384*alpha**2*delta**4*gamma**6+2304*alpha*beta*delta**4*gamma**6+2304*beta**2*delta**4*gamma**6+256*alpha*delta**5*gamma**6+256*beta*delta**5*gamma**6+1536*delta**5*epsilon*gamma**6+384*alpha*beta*delta**3*gamma**7+768*beta**2*delta**3*gamma**7+384*alpha*delta**4*gamma**7+512*beta*delta**4*gamma**7+96*beta**2*delta**2*gamma**8+192*alpha*delta**3*gamma**8+384*beta*delta**3*gamma**8+16*delta**4*gamma**8+32*alpha*delta**2*gamma**9+128*beta*delta**2*gamma**9+32*delta**3*gamma**9+16*beta*delta*gamma**10+24*delta**2*gamma**10+8*delta*gamma**11+gamma**12+81920*alpha**3*delta**8.5*H+294912*alpha**2*beta*delta**8.5*H+344064*alpha*beta**2*delta**8.5*H+131072*beta**3*delta**8.5*H+131072*alpha**2*delta**9.5*H+131072*alpha*beta*delta**9.5*H+1376256*alpha*delta**9.5*epsilon*H+1572864*beta*delta**9.5*epsilon*H+122880*alpha**2*beta*delta**7.5*gamma*H+294912*alpha*beta**2*delta**7.5*gamma*H+172032*beta**3*delta**7.5*gamma*H+49152*alpha**2*delta**8.5*gamma*H+32768*alpha*beta*delta**8.5*gamma*H+49152*beta**2*delta**8.5*gamma*H+688128*beta*delta**8.5*epsilon*gamma*H+196608*delta**9.5*epsilon*gamma*H+61440*alpha*beta**2*delta**6.5*gamma**2*H+73728*beta**3*delta**6.5*gamma**2*H+73728*alpha**2*delta**7.5*gamma**2*H+221184*alpha*beta*delta**7.5*gamma**2*H+147456*beta**2*delta**7.5*gamma**2*H+32768*alpha*delta**8.5*gamma**2*H+393216*delta**8.5*epsilon*gamma**2*H+10240*beta**3*delta**5.5*gamma**3*H+30720*alpha**2*delta**6.5*gamma**3*H+147456*alpha*beta*delta**6.5*gamma**3*H+141312*beta**2*delta**6.5*gamma**3*H+8192*alpha*delta**7.5*gamma**3*H+24576*beta*delta**7.5*gamma**3*H+172032*delta**7.5*epsilon*gamma**3*H+30720*alpha*beta*delta**5.5*gamma**4*H+55296*beta**2*delta**5.5*gamma**4*H+33792*alpha*delta**6.5*gamma**4*H+49152*beta*delta**6.5*gamma**4*H+7680*beta**2*delta**4.5*gamma**5*H+18432*alpha*delta**5.5*gamma**5*H+38400*beta*delta**5.5*gamma**5*H+3072*delta**6.5*gamma**5*H+3840*alpha*delta**4.5*gamma**6*H+13824*beta*delta**4.5*gamma**6*H+5120*delta**5.5*gamma**6*H+1920*beta*delta**3.5*gamma**7*H+3456*delta**4.5*gamma**7*H+1152*delta**3.5*gamma**8*H+160*delta**2.5*gamma**9*H+573440*alpha**2*delta**9*H**2+1703936*alpha*beta*delta**9*H**2+1179648*beta**2*delta**9*H**2+1310720*alpha*delta**10*H**2+393216*beta*delta**10*H**2+4718592*delta**10*epsilon*H**2+573440*alpha*beta*delta**8*gamma*H**2+851968*beta**2*delta**8*gamma*H**2+688128*alpha*delta**9*gamma*H**2+655360*beta*delta**9*gamma*H**2+143360*beta**2*delta**7*gamma**2*H**2+425984*alpha*delta**8*gamma**2*H**2+933888*beta*delta**8*gamma**2*H**2+16384*delta**9*gamma**2*H**2+143360*alpha*delta**7*gamma**3*H**2+425984*beta*delta**7*gamma**3*H**2+163840*delta**8*gamma**3*H**2+71680*beta*delta**6*gamma**4*H**2+159744*delta**7*gamma**4*H**2+53248*delta**6*gamma**5*H**2+8960*delta**5*gamma**6*H**2+1638400*alpha*delta**9.5*H**3+3145728*beta*delta**9.5*H**3+2097152*delta**10.5*H**3+819200*beta*delta**8.5*gamma*H**3+2359296*delta**9.5*gamma*H**3+786432*delta**8.5*gamma**2*H**3+204800*delta**7.5*gamma**3*H**3+1572864*delta**10*H**4+32768*alpha**3*delta**8.5*H*S+98304*alpha**2*beta*delta**8.5*H*S+98304*alpha*beta**2*delta**8.5*H*S+32768*beta**3*delta**8.5*H*S+131072*alpha*delta**9.5*epsilon*H*S+131072*beta*delta**9.5*epsilon*H*S+49152*alpha**2*beta*delta**7.5*gamma*H*S+98304*alpha*beta**2*delta**7.5*gamma*H*S+49152*beta**3*delta**7.5*gamma*H*S+65536*beta*delta**8.5*epsilon*gamma*H*S+24576*alpha*beta**2*delta**6.5*gamma**2*H*S+24576*beta**3*delta**6.5*gamma**2*H*S+24576*alpha**2*delta**7.5*gamma**2*H*S+49152*alpha*beta*delta**7.5*gamma**2*H*S+24576*beta**2*delta**7.5*gamma**2*H*S+32768*delta**8.5*epsilon*gamma**2*H*S+4096*beta**3*delta**5.5*gamma**3*H*S+12288*alpha**2*delta**6.5*gamma**3*H*S+49152*alpha*beta*delta**6.5*gamma**3*H*S+36864*beta**2*delta**6.5*gamma**3*H*S+16384*delta**7.5*epsilon*gamma**3*H*S+12288*alpha*beta*delta**5.5*gamma**4*H*S+18432*beta**2*delta**5.5*gamma**4*H*S+6144*alpha*delta**6.5*gamma**4*H*S+6144*beta*delta**6.5*gamma**4*H*S+3072*beta**2*delta**4.5*gamma**5*H*S+6144*alpha*delta**5.5*gamma**5*H*S+9216*beta*delta**5.5*gamma**5*H*S+1536*alpha*delta**4.5*gamma**6*H*S+4608*beta*delta**4.5*gamma**6*H*S+512*delta**5.5*gamma**6*H*S+768*beta*delta**3.5*gamma**7*H*S+768*delta**4.5*gamma**7*H*S+384*delta**3.5*gamma**8*H*S+64*delta**2.5*gamma**9*H*S+589824*alpha**2*delta**9*H**2*S+1376256*alpha*beta*delta**9*H**2*S+786432*beta**2*delta**9*H**2*S+131072*alpha*delta**10*H**2*S+1048576*delta**10*epsilon*H**2*S+589824*alpha*beta*delta**8*gamma*H**2*S+688128*beta**2*delta**8*gamma*H**2*S+196608*alpha*delta**9*gamma*H**2*S+196608*beta*delta**9*gamma*H**2*S+147456*beta**2*delta**7*gamma**2*H**2*S+344064*alpha*delta**8*gamma**2*H**2*S+491520*beta*delta**8*gamma**2*H**2*S+147456*alpha*delta**7*gamma**3*H**2*S+344064*beta*delta**7*gamma**3*H**2*S+49152*delta**8*gamma**3*H**2*S+73728*beta*delta**6*gamma**4*H**2*S+73728*delta**7*gamma**4*H**2*S+43008*delta**6*gamma**5*H**2*S+9216*delta**5*gamma**6*H**2*S+3407872*alpha*delta**9.5*H**3*S+4718592*beta*delta**9.5*H**3*S+524288*delta**10.5*H**3*S+1703936*beta*delta**8.5*gamma*H**3*S+1572864*delta**9.5*gamma*H**3*S+1179648*delta**8.5*gamma**2*H**3*S+425984*delta**7.5*gamma**3*H**3*S+6291456*delta**10*H**4*S
+    den = 1572864*delta**10*H**4
 
-    return output
+    coef = num / den
+
+    return coef
 
 def coefMinus(
     epsilon: float,
@@ -70,50 +27,7 @@ def coefMinus(
     H: float
 ) -> float:
 
-    aux0=(delta**2)*((3.*alpha)+((-9.*beta)+((6.*(H*((-2.+S)*(np.sqrt(\
-    delta)))))+delta)))
-    aux1=(-3.*(beta*delta))+(2.*((alpha+(H*((-5.+(2.*S))*(np.sqrt(delta))))\
-    )*delta))
-    aux2=(4.*(H*((-2.+S)*(beta*(np.sqrt(delta))))))+(((beta-alpha)*delta)+(\
-    -2.*(H*((-5.+S)*(delta**1.5)))))
-    aux3=(-3.*((-2.+S)*alpha))+((H*((-11.+(15.*S))*(np.sqrt(delta))))+(3.*\
-    delta))
-    aux4=(12.*(beta*((alpha+(H*((-5.+(2.*S))*(np.sqrt(delta)))))*delta)))+(\
-    (4.*(H*((delta**1.5)*aux3)))+(12.*((delta**2)*epsilon)))
-    aux5=(delta**3.)*((beta**3.)+((-3.*((alpha**2)*delta))+((-9.*((beta**\
-    2)*delta))+aux4)))
-    aux6=alpha*(((2.*(beta*delta))+(2.*(H*((5.+(-2.*S))*(delta**1.5)))))-(\
-    beta**2))
-    aux7=(4.*(H*((-4.+S)*(beta*(delta**1.5)))))+(aux6+(4.*((delta**2)*((6.\
-    *((H**2)*(-1.+S)))+epsilon))))
-    aux8=((beta**3.)+((-2.*(H*((-2.+S)*((beta**2)*(np.sqrt(delta))))))+\
-    aux7))-((beta**2)*delta)
-    aux9=((2.*(H*((-2.+S)*(beta*(np.sqrt(delta))))))+(2.*(H*(delta**1.5))))\
-    -(beta**2)
-    aux10=beta*(delta*((H*((-11.*H)+((15.*(H*S))+(3.*(np.sqrt(delta))))))+(\
-    3.*epsilon)))
-    aux11=(6.*(H*((5.+(-2.*S))*((beta**2)*(np.sqrt(delta))))))+((24.*((H**\
-    2)*((-3.+S)*(delta**2))))+((6.*(alpha*aux9))+(-4.*aux10)))
-    aux12=256.*(gamma*((delta**5.)*((3.*((alpha**2)*beta))+((3.*(beta**3.)\
-    )+aux11))))
-    aux13=(delta**1.5)*((2.*(H*((3.*H)+((-9.*(H*S))+(np.sqrt(delta))))))+((\
-    -9.+S)*epsilon))
-    aux14=delta*((H*((-11.*H)+((15.*(H*S))+(-2.*(np.sqrt(delta))))))+(3.*\
-    epsilon))
-    aux15=(-3.*(beta**2))+((6.*(H*((-5.+(2.*S))*(beta*(np.sqrt(delta))))))+\
-    (4.*aux14))
-    aux16=(-12.*(beta*(delta*((6.*((H**2)*(-1.+S)))+epsilon))))+((8.*(H*\
-    aux13))+(alpha*aux15))
-    aux17=(3.*((alpha**2)*(beta+(-2.*(H*((-2.+S)*(np.sqrt(delta))))))))+((-\
-    6.*(H*((-3.+S)*((beta**2)*(np.sqrt(delta))))))+aux16)
-    aux18=(384.*((gamma**2)*((delta**4.)*(aux8-((alpha**2)*delta)))))+(\
-    aux12+(512.*((delta**6.)*(((beta**3.)+aux17)-(alpha**3.)))))
-    aux19=(96.*((gamma**4.)*((delta**3.)*((((2.*alpha)+(-3.*beta))*beta)+\
-    aux2))))+((64.*((gamma**3.)*aux5))+aux18)
-    aux20=(-8.*((gamma**6.)*aux0))+((-48.*((gamma**5.)*((delta**2)*((beta**\
-    2)+aux1))))+aux19)
-    aux21=(-6.*((gamma**8.)*delta))+((12.*((gamma**7.)*((beta-delta)*\
-    delta)))+aux20)
-    output=0.0000406901*((H**-3.)*((delta**-7.5)*(aux21-(gamma**9.))))
+    num = 4096*alpha**4*delta**8+16384*alpha**3*beta*delta**8+24576*alpha**2*beta**2*delta**8+16384*alpha*beta**3*delta**8+4096*beta**4*delta**8+98304*alpha**2*delta**9*epsilon+196608*alpha*beta*delta**9*epsilon+98304*beta**2*delta**9*epsilon+65536*delta**10*epsilon**2+8192*alpha**3*beta*delta**7*gamma+24576*alpha**2*beta**2*delta**7*gamma+24576*alpha*beta**3*delta**7*gamma+8192*beta**4*delta**7*gamma+98304*alpha*beta*delta**8*epsilon*gamma+98304*beta**2*delta**8*epsilon*gamma+6144*alpha**2*beta**2*delta**6*gamma**2+12288*alpha*beta**3*delta**6*gamma**2+6144*beta**4*delta**6*gamma**2+4096*alpha**3*delta**7*gamma**2+12288*alpha**2*beta*delta**7*gamma**2+12288*alpha*beta**2*delta**7*gamma**2+4096*beta**3*delta**7*gamma**2+24576*beta**2*delta**7*epsilon*gamma**2+49152*alpha*delta**8*epsilon*gamma**2+49152*beta*delta**8*epsilon*gamma**2+2048*alpha*beta**3*delta**5*gamma**3+2048*beta**4*delta**5*gamma**3+2048*alpha**3*delta**6*gamma**3+12288*alpha**2*beta*delta**6*gamma**3+18432*alpha*beta**2*delta**6*gamma**3+8192*beta**3*delta**6*gamma**3+24576*alpha*delta**7*epsilon*gamma**3+49152*beta*delta**7*epsilon*gamma**3+256*beta**4*delta**4*gamma**4+3072*alpha**2*beta*delta**5*gamma**4+9216*alpha*beta**2*delta**5*gamma**4+6144*beta**3*delta**5*gamma**4+1536*alpha**2*delta**6*gamma**4+3072*alpha*beta*delta**6*gamma**4+1536*beta**2*delta**6*gamma**4+12288*beta*delta**6*epsilon*gamma**4+6144*delta**7*epsilon*gamma**4+1536*alpha*beta**2*delta**4*gamma**5+2048*beta**3*delta**4*gamma**5+1536*alpha**2*delta**5*gamma**5+4608*alpha*beta*delta**5*gamma**5+3072*beta**2*delta**5*gamma**5+6144*delta**6*epsilon*gamma**5+256*beta**3*delta**3*gamma**6+384*alpha**2*delta**4*gamma**6+2304*alpha*beta*delta**4*gamma**6+2304*beta**2*delta**4*gamma**6+256*alpha*delta**5*gamma**6+256*beta*delta**5*gamma**6+1536*delta**5*epsilon*gamma**6+384*alpha*beta*delta**3*gamma**7+768*beta**2*delta**3*gamma**7+384*alpha*delta**4*gamma**7+512*beta*delta**4*gamma**7+96*beta**2*delta**2*gamma**8+192*alpha*delta**3*gamma**8+384*beta*delta**3*gamma**8+16*delta**4*gamma**8+32*alpha*delta**2*gamma**9+128*beta*delta**2*gamma**9+32*delta**3*gamma**9+16*beta*delta*gamma**10+24*delta**2*gamma**10+8*delta*gamma**11+gamma**12+81920*alpha**3*delta**8.5*H+294912*alpha**2*beta*delta**8.5*H+344064*alpha*beta**2*delta**8.5*H+131072*beta**3*delta**8.5*H+131072*alpha**2*delta**9.5*H+131072*alpha*beta*delta**9.5*H+1376256*alpha*delta**9.5*epsilon*H+1572864*beta*delta**9.5*epsilon*H+122880*alpha**2*beta*delta**7.5*gamma*H+294912*alpha*beta**2*delta**7.5*gamma*H+172032*beta**3*delta**7.5*gamma*H+49152*alpha**2*delta**8.5*gamma*H+32768*alpha*beta*delta**8.5*gamma*H+49152*beta**2*delta**8.5*gamma*H+688128*beta*delta**8.5*epsilon*gamma*H+196608*delta**9.5*epsilon*gamma*H+61440*alpha*beta**2*delta**6.5*gamma**2*H+73728*beta**3*delta**6.5*gamma**2*H+73728*alpha**2*delta**7.5*gamma**2*H+221184*alpha*beta*delta**7.5*gamma**2*H+147456*beta**2*delta**7.5*gamma**2*H+32768*alpha*delta**8.5*gamma**2*H+393216*delta**8.5*epsilon*gamma**2*H+10240*beta**3*delta**5.5*gamma**3*H+30720*alpha**2*delta**6.5*gamma**3*H+147456*alpha*beta*delta**6.5*gamma**3*H+141312*beta**2*delta**6.5*gamma**3*H+8192*alpha*delta**7.5*gamma**3*H+24576*beta*delta**7.5*gamma**3*H+172032*delta**7.5*epsilon*gamma**3*H+30720*alpha*beta*delta**5.5*gamma**4*H+55296*beta**2*delta**5.5*gamma**4*H+33792*alpha*delta**6.5*gamma**4*H+49152*beta*delta**6.5*gamma**4*H+7680*beta**2*delta**4.5*gamma**5*H+18432*alpha*delta**5.5*gamma**5*H+38400*beta*delta**5.5*gamma**5*H+3072*delta**6.5*gamma**5*H+3840*alpha*delta**4.5*gamma**6*H+13824*beta*delta**4.5*gamma**6*H+5120*delta**5.5*gamma**6*H+1920*beta*delta**3.5*gamma**7*H+3456*delta**4.5*gamma**7*H+1152*delta**3.5*gamma**8*H+160*delta**2.5*gamma**9*H+573440*alpha**2*delta**9*H**2+1703936*alpha*beta*delta**9*H**2+1179648*beta**2*delta**9*H**2+1310720*alpha*delta**10*H**2+393216*beta*delta**10*H**2+4718592*delta**10*epsilon*H**2+573440*alpha*beta*delta**8*gamma*H**2+851968*beta**2*delta**8*gamma*H**2+688128*alpha*delta**9*gamma*H**2+655360*beta*delta**9*gamma*H**2+143360*beta**2*delta**7*gamma**2*H**2+425984*alpha*delta**8*gamma**2*H**2+933888*beta*delta**8*gamma**2*H**2+16384*delta**9*gamma**2*H**2+143360*alpha*delta**7*gamma**3*H**2+425984*beta*delta**7*gamma**3*H**2+163840*delta**8*gamma**3*H**2+71680*beta*delta**6*gamma**4*H**2+159744*delta**7*gamma**4*H**2+53248*delta**6*gamma**5*H**2+8960*delta**5*gamma**6*H**2+1638400*alpha*delta**9.5*H**3+3145728*beta*delta**9.5*H**3+2097152*delta**10.5*H**3+819200*beta*delta**8.5*gamma*H**3+2359296*delta**9.5*gamma*H**3+786432*delta**8.5*gamma**2*H**3+204800*delta**7.5*gamma**3*H**3+1572864*delta**10*H**4+32768*alpha**3*delta**8.5*H*S+98304*alpha**2*beta*delta**8.5*H*S+98304*alpha*beta**2*delta**8.5*H*S+32768*beta**3*delta**8.5*H*S+131072*alpha*delta**9.5*epsilon*H*S+131072*beta*delta**9.5*epsilon*H*S+49152*alpha**2*beta*delta**7.5*gamma*H*S+98304*alpha*beta**2*delta**7.5*gamma*H*S+49152*beta**3*delta**7.5*gamma*H*S+65536*beta*delta**8.5*epsilon*gamma*H*S+24576*alpha*beta**2*delta**6.5*gamma**2*H*S+24576*beta**3*delta**6.5*gamma**2*H*S+24576*alpha**2*delta**7.5*gamma**2*H*S+49152*alpha*beta*delta**7.5*gamma**2*H*S+24576*beta**2*delta**7.5*gamma**2*H*S+32768*delta**8.5*epsilon*gamma**2*H*S+4096*beta**3*delta**5.5*gamma**3*H*S+12288*alpha**2*delta**6.5*gamma**3*H*S+49152*alpha*beta*delta**6.5*gamma**3*H*S+36864*beta**2*delta**6.5*gamma**3*H*S+16384*delta**7.5*epsilon*gamma**3*H*S+12288*alpha*beta*delta**5.5*gamma**4*H*S+18432*beta**2*delta**5.5*gamma**4*H*S+6144*alpha*delta**6.5*gamma**4*H*S+6144*beta*delta**6.5*gamma**4*H*S+3072*beta**2*delta**4.5*gamma**5*H*S+6144*alpha*delta**5.5*gamma**5*H*S+9216*beta*delta**5.5*gamma**5*H*S+1536*alpha*delta**4.5*gamma**6*H*S+4608*beta*delta**4.5*gamma**6*H*S+512*delta**5.5*gamma**6*H*S+768*beta*delta**3.5*gamma**7*H*S+768*delta**4.5*gamma**7*H*S+384*delta**3.5*gamma**8*H*S+64*delta**2.5*gamma**9*H*S+589824*alpha**2*delta**9*H**2*S+1376256*alpha*beta*delta**9*H**2*S+786432*beta**2*delta**9*H**2*S+131072*alpha*delta**10*H**2*S+1048576*delta**10*epsilon*H**2*S+589824*alpha*beta*delta**8*gamma*H**2*S+688128*beta**2*delta**8*gamma*H**2*S+196608*alpha*delta**9*gamma*H**2*S+196608*beta*delta**9*gamma*H**2*S+147456*beta**2*delta**7*gamma**2*H**2*S+344064*alpha*delta**8*gamma**2*H**2*S+491520*beta*delta**8*gamma**2*H**2*S+147456*alpha*delta**7*gamma**3*H**2*S+344064*beta*delta**7*gamma**3*H**2*S+49152*delta**8*gamma**3*H**2*S+73728*beta*delta**6*gamma**4*H**2*S+73728*delta**7*gamma**4*H**2*S+43008*delta**6*gamma**5*H**2*S+9216*delta**5*gamma**6*H**2*S+3407872*alpha*delta**9.5*H**3*S+4718592*beta*delta**9.5*H**3*S+524288*delta**10.5*H**3*S+1703936*beta*delta**8.5*gamma*H**3*S+1572864*delta**9.5*gamma*H**3*S+1179648*delta**8.5*gamma**2*H**3*S+425984*delta**7.5*gamma**3*H**3*S+6291456*delta**10*H**4*S
+    den = 1572864*delta**10*H**4
 
-    return output
+    return num / den
