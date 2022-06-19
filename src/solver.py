@@ -5,7 +5,8 @@ import os
 from scipy.optimize import fsolve
 from typing import Dict, List
 
-from src.coefficients import *
+from src.plus_formatted import coefPlus
+from src.minus_formatted import minusPlus
 from src.couplings import *
 
 HBAR = 1
@@ -22,6 +23,8 @@ class Solver():
         omega2: List[float],
         tau: List[float],
         r: List[float],
+        epsilon0: float = 1.0,
+        S0: float = -10.0,
         log_dir: str = './results'
     ) -> None:
 
@@ -33,11 +36,8 @@ class Solver():
         self.omega2 = omega2
         self.tau = tau
         self.r = r
-        self.log_dir = log_dir
-
-        epsilon0 = 1
-        S0 = -10
         self.x0 = [epsilon0, S0]
+        self.log_dir = log_dir
 
         self.grid = self._prepare_grid()
 
@@ -69,23 +69,23 @@ class Solver():
     ) -> np.ndarray:
 
         equation0 = coefPlus(
-            x[0],
-            x[1],
-            alpha,
-            beta,
-            gamma,
-            delta,
-            H
+            epsilon=x[0],
+            S=x[1],
+            alpha=alpha,
+            beta=beta,
+            gamma=gamma,
+            delta=delta,
+            H=H
         )
 
         equation1 = coefMinus(
-            x[0],
-            x[1],
-            alpha,
-            beta,
-            gamma,
-            delta,
-            H
+            epsilon=x[0],
+            S=x[1],
+            alpha=alpha,
+            beta=beta,
+            gamma=gamma,
+            delta=delta,
+            H=H
         )
 
         return [equation0, equation1]
@@ -113,4 +113,3 @@ class Solver():
 
         with open(os.path.join(self.log_dir, 'results.json'), 'w') as f:
             json.dump(self.grid, f, indent=4)
-

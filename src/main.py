@@ -16,7 +16,9 @@ def main(args) -> None:
         omega1=args.omega1,
         omega2=args.omega2,
         tau=args.tau,
-        r = args.r,
+        r=args.r,
+        epsilon0=args.epsilon0,
+        S0=args.S0,
         log_dir=log_dir
     )
 
