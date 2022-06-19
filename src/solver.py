@@ -5,8 +5,8 @@ import os
 from scipy.optimize import fsolve
 from typing import Dict, List
 
-from src.plus_formatted import coefPlus
-from src.minus_formatted import minusPlus
+from src.positive_coefficient import coefPlus
+from src.negative_formatted import minusPlus
 from src.couplings import *
 
 HBAR = 1
