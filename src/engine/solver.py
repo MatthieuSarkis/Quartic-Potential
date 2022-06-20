@@ -5,11 +5,10 @@ import os
 from scipy.optimize import fsolve
 from typing import Dict, List
 
-from src.positive_coefficient import coefPlus
-from src.negative_formatted import minusPlus
+from src.expansion_coefficients.positive_coefficient import coefPlus
+from src.expansion_coefficients.negative_coefficient import coefMinus
 from src.couplings import *
-
-HBAR = 1
+from src.utils.atomic_data import HBAR
 
 class Solver():
 

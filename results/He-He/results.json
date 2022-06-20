@@ -1,0 +1,14 @@
+[
+    {
+        "tau": 0.0,
+        "r": 1.0,
+        "epsilon": -3.064841838605012,
+        "energy_unit": "hartree"
+    },
+    {
+        "tau": 0.0,
+        "r": 2.0,
+        "epsilon": 4.510339762285873,
+        "energy_unit": "hartree"
+    }
+]

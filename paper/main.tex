@@ -1,0 +1,269 @@
+\documentclass[reprint, amsmath, amssymb, aps, prl]{revtex4-2}
+
+\usepackage{graphicx}
+\graphicspath{{./assets/figures/}}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage[table]{xcolor}
+\usepackage{empheq} % to use left braces for list of equations
+\usepackage{hyperref}
+
+\begin{document}
+
+\preprint{APS/123-QED}
+
+\title{Ground state energy of diatomic molecules\\ in the Quantum Drude Oscillator model}
+%\thanks{}
+
+\author{Matthieu Sarkis}
+\email{matthieu.sarkis@uni.lu}
+
+\author{Loris di Cairano}%
+\email{loris.dicairano@uni.lu}
+
+\author{Alexandre Tkatchenko}%
+\email{alexandre.tkatchenko@uni.lu}
+
+\affiliation{
+Department of Physics and Materials Science\\ University of Luxembourg, L-1511, Luxembourg City, Luxembourg.
+}
+
+%\collaboration{}%\noaffiliation
+
+\date{\today}
+
+\begin{abstract}
+Abstract
+%\begin{description}
+%\item[Usage]
+%Secondary publications and information retrieval purposes.
+%\item[Structure]
+%You may use the \texttt{description} environment to structure your abstract;
+%use the optional argument of the \verb+\item+ command to give the category of each item.
+%\end{description}
+\end{abstract}
+
+%\keywords{Suggested keywords}%Use showkeys class option if keyword
+                              %display desired
+\maketitle
+
+%\tableofcontents
+
+\section{Introduction}
+
+    A Quantum Drude Oscillator (QDO) is a very simple atomistic model in which the properties of an atom are encompassed in a small number of parameters. The model consists in assimilating the atom to a point particle of mass $m$ and electric charge $-q$ attached to a fixed (infinite mass) center of charge $+q$ by a harmonic spring characterized by a frequency $\omega$. Molecules are then defined as a collections of QDOs interactig through Coulomb interactions.
+
+    \begin{figure}[h!]
+    \centering
+        \includegraphics[scale=0.49]{QDOs}
+        \caption{\label{fig:epsart} Pair of interacting QDOs.}
+    \end{figure}
+
+    This simple model has been extensively used in various contexts, for instance in order to tackle the electronic structure problem for isolated molecules, in particular long range interactions, as well as to study the impact of an ambient bath or of an external electric field on molecular properties \cite{Karimpour_2022}.
+
+    Even though the harmonic oscillator nature of the atomic constituents in this model drastically simplify the complexity of problem, the all-body Coulomb interaction remains challenging. One possible way to proceed is to treat the Coulomb interaction by performing a multipolar expansion.
+
+    By truncating the multipolar expansion up to Dipole-Dipole, one obtain a quadratic Hamiltonian, hence the quantum Hamiltonian can be analytically diagonalized. Though simple, this system was shown to capture long-range phenomena in large atomistic systems \cite{https://doi.org/10.48550/arxiv.2205.11549}.
+
+    In the present work, we focus instead on small (diatomic) molecules in 1d, and treat in an \textit{analytical} way the Coulombic interactions up to Quadrupole-Quadrupole and Dipole-Octupole order, paving the way towards generalization for larger systems.
+
+    \textit{GitHub repository}: The reader will find an open source code accompanying this paper following this \href{https://github.com/MatthieuSarkis/Quartic-Potential}{link}.
+
+\section{Quartic Hamiltonian for diatomic molecules}
+
+    \subsection{Multipolar expansion for the Coulomb potential}
+
+        The Hamiltonian describing a system of $N$ QDOs in 3d is given by:
+        \begin{equation}
+        \label{eq:full_QDO_Hamiltonian}
+            H=\sum_{i=1}^N\left[\frac{1}{2}m_i\dot{\vec x}_i^2 + \frac{1}{2}m_i\omega_i^2\vec x_i^2\right] +\sum_{i<j}V_\text{Coul}\left(\vec x_i, \vec x_j\right)\,,
+        \end{equation}
+        with the Coulomb interaction given by
+        \begin{equation*}
+            \frac{V_\text{Coul}\left(\vec x_1, \vec x_2\right)}{q_1q_2(4\pi\epsilon_0)^{-1}}=\frac{1}{r} - \frac{1}{|\vec r + \vec x_1|} - \frac{1}{|\vec r - \vec x_2|} + \frac{1}{|\vec r - \vec x_2 + \vec x_1|}
+        \end{equation*}
+        In the multipolar expansion, this can be expressed as:
+        \begin{equation}
+            V_\text{Coul}\left(\vec x_1, \vec x_2\right)= \sum_{n\geq 0} V_n\left(\vec x_1, \vec x_2\right)\,,
+        \end{equation}
+        with the following scaling behavior in terms of the distance between the centers:
+        \begin{equation}
+            V_n\left(\vec x_1, \vec x_2\right)\propto r^{-n+3}\,.
+        \end{equation}
+        The first terms in that multipolar expansion have the following interpretation:
+        \begin{itemize}
+            \item $n=0$ : Dipole-Dipole interaction (DD),
+            \item $n=1$ : Dipole-Quadrupole interaction (DQ),
+            \item $n=2$ : Quadrupole-Quadrupole and Dipole-Octupole interaction (QQ+DO).
+        \end{itemize}
+        Using the following identity for generic vectors $\vec r$ and $\vec \epsilon$:
+        \begin{widetext}
+        \begin{equation}
+            \frac{1}{\left|\vec r - \vec\epsilon\,\right|} = \frac{1}{r}\left[1 + \frac{\vec\epsilon\cdot\hat r}{r} - \frac{\epsilon^2 - 3(\vec\epsilon\cdot\hat r)^2}{2r^2}+\frac{5(\vec\epsilon\cdot\hat r)^3-3\epsilon^2(\vec\epsilon\cdot\hat r)}{2r^3}+\frac{35(\vec\epsilon\cdot\hat r)^4-30\epsilon^2(\vec\epsilon\cdot\hat r)^2+3\epsilon^4}{8r^4}+\mathcal O\left(\frac{\epsilon^5}{r^5}\right)\right]
+        \end{equation}
+        \end{widetext}
+        one can explicitely compute $V_0$, $V_1$ and $V_2$. Instead of writting out the expression of these potentials in full glory, let us now restrict ourselves to a system composed of $N=2$ QDOs.
+
+    \subsection{Reduced particle system}
+
+        Let us move to the center of mass frame, in which the dynamics reduces to that of an effective reduced particle:
+        \begin{subequations}
+        \begin{align}
+            &\vec x:=\vec x_1 - \vec x_2\\
+            &m_1\vec x_1 + m_2\vec x_2 = \vec 0\,.
+        \end{align}
+        \end{subequations}
+        In terms of the reduced variable, a straightforward computation gives us:
+        \begin{subequations}
+        \begin{align}
+            V_0(\vec x)=\,&-\frac{m_1m_2}{(m_1+m_2)^2}\cdot\frac{ x^2-3(\vec x\cdot\hat r)^2}{4\pi\epsilon_0r^3}\,,\\
+            V_1(\vec x)=\,&\frac{3m_1m_2}{2(m_1+m_2)^2}\cdot\frac{(\vec x\cdot\hat r)\left(3x^2 - 5(\vec x\cdot\hat r)^2\right)}{4\pi\epsilon_0r^4}\,,\\
+            V_2(\vec x)=\,&\frac{m_1m_2(2m_1^2+3m_1m_2+2m_2^2)}{4(m_1+m_2)^4}\times\\
+            &\times\frac{3x^4 - 30(\vec x\cdot\hat r)^2 x^2+35(\vec x\cdot\hat r)^4}{4\pi\epsilon_0r^5}\nonumber\,.
+        \end{align}
+        \end{subequations}
+        Let us now assume that the system is effectively one-dimensional, aligned along the direction on which the centers of the two QDOs are sitting. One obtain the following one-dimensional potentials for an effective particle of mass $m_1m_2 / (m_1+m_2)$:
+        \begin{subequations}
+        \begin{align}
+            V_0(x)&=\frac{2m_1m_2}{(m_1+m_2)^2}\cdot\frac{2 x^2}{4\pi\epsilon_0r^3}\,,\\
+            V_1(x)&=-\frac{3m_1m_2}{(m_1+m_2)^2}\cdot\frac{\text{sgn}(\vec x\cdot\hat r)|x|x^2}{4\pi\epsilon_0r^4}=\mathbin{\textcolor{teal}{-\frac{3m_1m_2}{(m_1+m_2)^2}\cdot\frac{x^3}{4\pi\epsilon_0r^4}}}\,,\\
+            V_2(x)&=\frac{2m_1m_2(2m_1^2+3m_1m_2+2m_2^2)}{(m_1+m_2)^4}\cdot\frac{x^4}{4\pi\epsilon_0r^5}\,.
+        \end{align}
+        \end{subequations}
+
+        \textcolor{teal}{As a comment concerning this possible sign issue: maybe one can argue that provided the external field is strong enough, we can take $x^3$.}
+
+        Including the contribution of the harmonic potentials present in (\ref{eq:full_QDO_Hamiltonian}) and coupling the system to an external electric field, one finally obtain the following total one-dimensional potential:
+        \begin{equation}
+        \label{eq:quartic_potential}
+            V(x) = \alpha x + \beta x^2 + \gamma x^3 + \delta x^4 \,,
+        \end{equation}
+        with the following expression of the coupling constants:
+        \begin{subequations}
+        \label{eq:coupling_constants}
+        \begin{align}
+            \alpha &= -\frac{m_1 q_2 + m_2 q_1}{m_1+m_2}\cdot \mathcal E\\
+            \beta &= \frac{m_1m_2}{(m_1+m_2)^2}\cdot\frac{2q_1 q_2}{4\pi\epsilon_0r^3} + \frac{1}{2}\cdot\frac{m_1m_2}{m_1+m_2}\cdot\frac{m_1\omega_2^2+m_2\omega_1^2}{m_1+m_2}\\
+            \gamma&=-\frac{m_1m_2}{(m_1+m_2)^2}\cdot\frac{3 q_1 q_2}{4\pi\epsilon_0r^4}\,,\\
+            \delta&=\frac{2m_1m_2(2m_1^2+3m_1m_2+2m_2^2)}{(m_1+m_2)^4}\cdot\frac{q_1 q_2}{4\pi\epsilon_0r^5}\,.
+        \end{align}
+        \end{subequations}
+
+\section{Analytic solution of the Schr\"odinger equation}
+
+    In what follows, we define $k^2:=\frac{m_1+m_2}{m_1 m_2}\frac{\hbar^2}{2}$.
+    Let us consider the time-independent Schr\"odinger equation
+    \begin{equation}
+        \left[\frac{\text{d}^2}{\text{d}x^2} + \frac{\epsilon - V(x)}{k^2}\right]\psi(x) = 0\,,
+    \end{equation}
+    where the potential $V$ is provided by (\ref{eq:quartic_potential}) and (\ref{eq:coupling_constants}).
+    Performing the following change of variable:
+    \begin{equation}
+        \psi(x)=\exp\left[\frac{\gamma^2-4\beta\delta}{8k\delta^{3/2}}\,x-\frac{\gamma}{4k\delta^{1/2}}\,x^2-\frac{\delta^{1/2}}{3k}\,x^3\right]\phi(x)
+    \end{equation}
+    we obtain:
+    \begin{widetext}
+    \begin{equation}
+    \begin{split}
+        &\frac{\text{d}^2\phi}{\text{d}x^2}(x)+\left[\frac{\gamma^2-4\beta\delta}{4k\delta^{3/2}}-\frac{\gamma}{k\delta^{1/2}}\,x-\frac{2\delta^{1/2}}{k}\,x^2\right]\frac{\text{d}\phi}{\text{d}x}(x)\\
+        &+\left[\frac{16 \delta ^2 \left(\beta ^2+4 \delta  \epsilon \right)-8 \beta  \gamma ^2 \delta +\gamma ^4-32 \gamma  \delta ^{5/2} k}{64 \delta ^3 k^2}-\frac{8 \alpha  \delta ^2-4 \beta  \gamma  \delta +\gamma ^3+16 \delta ^{5/2} k}{8 \delta ^2 k^2}\,x\right]\phi(x)=0\,,
+    \end{split}
+    \end{equation}
+    \end{widetext}
+    which is known as the so-called \textit{tri-confluent Heun equation}.
+    We further perform the following change of variable, the reason why to become clear soon:
+    \begin{equation}
+        \phi(x)=(1+x)^{\frac{4 \beta  \gamma  \delta -\gamma ^3-8 \delta ^2 \left(\alpha +2k \delta^{1/2} \right)}{16k \delta ^{5/2}}}f(x)\,,
+    \end{equation}
+    as well as map the positive real axis to the segment $[0,1]$ through the change of argument
+    \begin{equation}
+        z=\frac{x}{x+1}\,,
+    \end{equation}
+    and look for a solution of the obtained ODE in terms of a series expansion at zero of the form:
+    \begin{equation}
+        f(z)=\sum_{n\geq 0}c_nz^n\,.
+    \end{equation}
+    Plugging the ansatz into the differential equation, we obtain the following recurrence relation between the coefficients:
+    \begin{widetext}
+    \begin{equation}
+    \begin{split}
+        &(n+1)(n+2) c_{n+2}+(n+1)(A -4n)c_{n+1} +[6(n-1) n+B n+E]c_n \\
+        &+[C (n-1)+F-4(n-2) (n-1)]c_{n-1} + [(n-3) (n-2)+D (n-2)+G]c_{n-2}=0\ \ \ (n\geq 2)
+    \end{split}
+    \end{equation}
+    \end{widetext}
+    where the various coefficients are listed in full details in appendix. The coefficients $c_0$ and $c_1$ are to be fixed through boundary conditions, and the coeffients $c_2$ and $c_3$ are in turn fixed by the following relations
+    \begin{equation}
+    \begin{split}
+        c_2&=-Ec_0-Ac_1\,,\\
+        c_3&=-\frac{ F c_0+(B+E)c_1 +2 (A-4)c_2 }{6}\,.
+    \end{split}
+    \end{equation}
+
+
+
+%\begin{acknowledgments}
+%We wish to acknowledge ...
+%\end{acknowledgments}
+
+\newpage
+
+\appendix
+
+\section{Details on the derivation}
+
+    \begin{widetext}
+    \begin{equation*}
+    \begin{split}
+        &A=-\frac{8 \delta ^2 (\alpha +\beta )-2 \gamma  \delta  (2 \beta +\gamma )+\gamma ^3+32 \delta ^{5/2} k}{8 \delta ^{5/2} k}\\
+        &B=\frac{8 \delta ^2 (3 \alpha +2 \beta -\gamma )-4 \gamma  \delta  (3 \beta +\gamma )+3 \gamma ^3+96 \delta ^{5/2} k}{8 \delta ^{5/2} k}\\
+        &C=-\frac{8 \delta ^2 (3 \alpha +\beta -\gamma )-2 \gamma  \delta  (6 \beta +\gamma )+3 \gamma ^3+16 \delta ^3+96 \delta ^{5/2} k}{8 \delta ^{5/2} k}\\
+        &D=\frac{-4 \beta  \gamma  \delta +\gamma ^3+8 \delta ^2 \left(\alpha +4 \sqrt{\delta } k\right)}{8 \delta ^{5/2} k}\\
+        &E=\frac{4 \gamma ^2 \delta ^2 \left(\gamma  (4 \alpha +\gamma )+4 \beta ^2+8 \beta  \gamma \right)-32 \gamma  \delta ^3 (\alpha +\beta ) (2 \beta +\gamma )+64 \delta ^4 (\alpha +\beta )^2-4 \gamma ^4 \delta  (2 \beta +\gamma )+\gamma ^6+256 \delta ^5 \left(2 k^2+\epsilon \right)+128 \delta ^{9/2} k (3 \alpha +2 \beta -\gamma )-64 \gamma  \delta ^{7/2} k (3 \beta +\gamma )+48 \gamma ^3 \delta ^{5/2} k}{256 \delta ^5 k^2}\\
+        &F=-\frac{\left(-4 \beta  \gamma  \delta +\gamma ^3+8 \delta ^2 \left(\alpha +2 \sqrt{\delta } k\right)\right) \left(-4 \gamma  \delta  (\beta +2 \delta )+\gamma ^3-2 \gamma ^2 \delta +8 \delta ^2 \left(\alpha +\beta +2 \delta +4 \sqrt{\delta } k\right)\right)}{128 \delta ^5 k^2}\\
+        &G=\frac{\left(-4 \beta  \gamma  \delta +\gamma ^3+8 \delta ^2 \left(\alpha +2 \sqrt{\delta } k\right)\right) \left(-4 \beta  \gamma  \delta +\gamma ^3+8 \delta ^2 \left(\alpha +4 \sqrt{\delta } k\right)\right)}{256 \delta ^5 k^2}
+    \end{split}
+    \end{equation*}
+    \end{widetext}
+
+\begin{table}[b]
+\caption{\label{tab:table2} aaa}
+\begin{ruledtabular}
+\begin{tabular}{cccccccc}
+ &$r_c$ (\AA)&$r_0$ (\AA)&$\kappa r_0$&
+ &$r_c$ (\AA) &$r_0$ (\AA)&$\kappa r_0$\\
+\hline
+Cu& 0.800 & 14.10 & 2.550 &Sn\footnotemark[1]
+& 0.680 & 1.870 & 3.700 \\
+Ag& 0.990 & 15.90 & 2.710 &Pb\footnotemark[2]
+& 0.450 & 1.930 & 3.760 \\
+Au& 1.150 & 15.90 & 2.710 &Ca\footnotemark[3]
+& 0.750 & 2.170 & 3.560 \\
+Mg& 0.490 & 17.60 & 3.200 &Sr\footnotemark[4]
+& 0.900 & 2.370 & 3.720 \\
+Zn& 0.300 & 15.20 & 2.970 &Li\footnotemark[2]
+& 0.380 & 1.730 & 2.830 \\
+Cd& 0.530 & 17.10 & 3.160 &Na\footnotemark[5]
+& 0.760 & 2.110 & 3.120 \\
+Hg& 0.550 & 17.80 & 3.220 &K\footnotemark[5]
+&  1.120 & 2.620 & 3.480 \\
+Al& 0.230 & 15.80 & 3.240 &Rb\footnotemark[3]
+& 1.330 & 2.800 & 3.590 \\
+Ga& 0.310 & 16.70 & 3.330 &Cs\footnotemark[4]
+& 1.420 & 3.030 & 3.740 \\
+In& 0.460 & 18.40 & 3.500 &Ba\footnotemark[5]
+& 0.960 & 2.460 & 3.780 \\
+Tl& 0.480 & 18.90 & 3.550 & & & & \\
+\end{tabular}
+\end{ruledtabular}
+\footnotetext[1]{Here's the first, from Ref.~\onlinecite{feyn54}.}
+\footnotetext[2]{Here's the second.}
+\footnotetext[3]{Here's the third.}
+\footnotetext[4]{Here's the fourth.}
+\footnotetext[5]{And etc.}
+\end{table}
+
+\nocite{*}
+\bibliography{bibliography}
+
+\end{document}
