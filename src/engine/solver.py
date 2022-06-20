@@ -60,7 +60,8 @@ class Solver():
             self.grid[i]['energy_unit'] = self.energy_unit
             #self.grid[i]['S'] = x[1]
 
-        self._dump_results()
+        self._dump_json()
+        self._dump_numpy()
 
     def equations(
         self,
@@ -107,7 +108,25 @@ class Solver():
 
         return grid
 
-    def _dump_results(self) -> None:
+    def _dump_json(self) -> None:
 
         with open(os.path.join(self.log_dir, 'results.json'), 'w') as f:
             json.dump(self.grid, f, indent=4)
+
+    def _dump_numpy(self) -> None:
+        r'''Saves the output data in a txt file, nicely formatted for latex tables.
+        The first column are the various values of the distance r.
+        The first line are the various values of the external field $\tau$.
+        '''
+
+        energy_array = np.zeros(shape=(len(self.tau) * len(self.r),))
+        for i in range(len(self.grid)):
+            energy_array[i] = self.grid[i]['epsilon']
+
+        energy_array = energy_array.reshape((len(self.tau), len(self.r))).T
+        r = np.array(self.r).reshape((-1, 1))
+        tau = np.array([0] + self.tau).reshape((1, -1))
+        energy_array = np.concatenate((r, energy_array), axis=1)
+        energy_array = np.concatenate((tau, energy_array), axis=0)
+
+        np.savetxt(os.path.join(self.log_dir, "r_vs_tau_table.txt"), energy_array, delimiter=' & ', fmt='%f', newline=' \\\\\n')

@@ -4,6 +4,7 @@
 \graphicspath{{./assets/figures/}}
 \usepackage{dcolumn}
 \usepackage{bm}
+\usepackage{diagbox}
 \usepackage[table]{xcolor}
 \usepackage{empheq} % to use left braces for list of equations
 \usepackage{hyperref}
@@ -200,6 +201,44 @@ Abstract
     \end{split}
     \end{equation}
 
+\section{Results}
+
+\begin{table}[h!]
+\caption{\label{tab:table1} Ground state energy (in Ha) of the H-H system}
+\begin{ruledtabular}
+\begin{tabular}{c|ccc}
+        \diagbox[height=1.8\line]{$r$ (a.u.)}{$\tau$ (\textcolor{teal}{unit})}& 0.0 & 1.0 & 2.0\\
+        \hline
+        1.0 & 5.428021 & 1.000000 & 3.673658 \\
+        2.0 & 0.531071 & 0.210137 & 0.872826 \\
+        3.0 & 1.532129 & 0.957917 & 0.999836 \\
+        4.0 & 1.968642 & 0.999963 & 1.000023 \\
+        5.0 & 0.031075 & 1.000000 & 1.014180 \\
+        6.0 & 0.978062 & 5.375749 & 0.970292 \\
+        7.0 & 21.654276 & 0.558010 & -34.785660 \\
+        8.0 & 43.488829 & 85.452632 & -28.868817
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\begin{table}[h!]
+\caption{\label{tab:table2} Ground state energy (in Ha) of the He-He system}
+\begin{ruledtabular}
+\begin{tabular}{c|ccc}
+    \diagbox[height=1.8\line]{$r$ (a.u.)}{$\tau$ (\textcolor{teal}{unit})}& 0.0 & 1.0 & 2.0\\
+    \hline
+    1.0 & 1.000000 & 1.000000 & 5.739538 \\
+    2.0 & 1.266281 & 1.134311 & -0.966946 \\
+    3.0 & 0.880808 & 0.147328 & -0.206244 \\
+    4.0 & 3.755382 & 0.136923 & 1.000000 \\
+    5.0 & 1.000000 & 0.999847 & 0.415453 \\
+    6.0 & 6.604936 & 1.000000 & -1.709232 \\
+    7.0 & 1.000008 & 1.000000 & 9.223832 \\
+    8.0& 198.102785 & 1.000000 & 20.246740
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
 
 
 %\begin{acknowledgments}
@@ -225,43 +264,6 @@ Abstract
     \end{split}
     \end{equation*}
     \end{widetext}
-
-\begin{table}[b]
-\caption{\label{tab:table2} aaa}
-\begin{ruledtabular}
-\begin{tabular}{cccccccc}
- &$r_c$ (\AA)&$r_0$ (\AA)&$\kappa r_0$&
- &$r_c$ (\AA) &$r_0$ (\AA)&$\kappa r_0$\\
-\hline
-Cu& 0.800 & 14.10 & 2.550 &Sn\footnotemark[1]
-& 0.680 & 1.870 & 3.700 \\
-Ag& 0.990 & 15.90 & 2.710 &Pb\footnotemark[2]
-& 0.450 & 1.930 & 3.760 \\
-Au& 1.150 & 15.90 & 2.710 &Ca\footnotemark[3]
-& 0.750 & 2.170 & 3.560 \\
-Mg& 0.490 & 17.60 & 3.200 &Sr\footnotemark[4]
-& 0.900 & 2.370 & 3.720 \\
-Zn& 0.300 & 15.20 & 2.970 &Li\footnotemark[2]
-& 0.380 & 1.730 & 2.830 \\
-Cd& 0.530 & 17.10 & 3.160 &Na\footnotemark[5]
-& 0.760 & 2.110 & 3.120 \\
-Hg& 0.550 & 17.80 & 3.220 &K\footnotemark[5]
-&  1.120 & 2.620 & 3.480 \\
-Al& 0.230 & 15.80 & 3.240 &Rb\footnotemark[3]
-& 1.330 & 2.800 & 3.590 \\
-Ga& 0.310 & 16.70 & 3.330 &Cs\footnotemark[4]
-& 1.420 & 3.030 & 3.740 \\
-In& 0.460 & 18.40 & 3.500 &Ba\footnotemark[5]
-& 0.960 & 2.460 & 3.780 \\
-Tl& 0.480 & 18.90 & 3.550 & & & & \\
-\end{tabular}
-\end{ruledtabular}
-\footnotetext[1]{Here's the first, from Ref.~\onlinecite{feyn54}.}
-\footnotetext[2]{Here's the second.}
-\footnotetext[3]{Here's the third.}
-\footnotetext[4]{Here's the fourth.}
-\footnotetext[5]{And etc.}
-\end{table}
 
 \nocite{*}
 \bibliography{bibliography}
