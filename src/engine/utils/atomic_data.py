@@ -1,5 +1,6 @@
 from typing import Tuple
 
+# The engine runs with atomic units, in which \hbar = 1.
 HBAR = 1.0
 
 # Obtained from "Quantum Drude Oscillators for Accurate Many-body Intermolecular Forces"

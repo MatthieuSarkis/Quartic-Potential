@@ -4,6 +4,7 @@
 
 * python 3
 * numpy
+* tqdm
 * ipykernel
 
 ```shell

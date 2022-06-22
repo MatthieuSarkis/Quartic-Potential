@@ -2,145 +2,127 @@
     {
         "tau": 0.0,
         "r": 1.0,
-        "epsilon": 5.428021475546305,
-        "energy_unit": "hartree"
+        "epsilon": 1.6921695212076764,
+        "epsilon (in hartree)": 1.6921695212076764
     },
     {
         "tau": 0.0,
         "r": 2.0,
-        "epsilon": 0.5310709436356946,
-        "energy_unit": "hartree"
-    },
-    {
-        "tau": 0.0,
-        "r": 3.0,
-        "epsilon": 1.532129392874822,
-        "energy_unit": "hartree"
-    },
-    {
-        "tau": 0.0,
-        "r": 4.0,
-        "epsilon": 1.9686420017533108,
-        "energy_unit": "hartree"
+        "epsilon": 0.6012238465019455,
+        "epsilon (in hartree)": 0.6012238465019455
     },
     {
         "tau": 0.0,
         "r": 5.0,
-        "epsilon": 0.031075007397160345,
-        "energy_unit": "hartree"
-    },
-    {
-        "tau": 0.0,
-        "r": 6.0,
-        "epsilon": 0.9780624001088851,
-        "energy_unit": "hartree"
+        "epsilon": 0.8574352118920567,
+        "epsilon (in hartree)": 0.8574352118920567
     },
     {
         "tau": 0.0,
         "r": 7.0,
-        "epsilon": 21.654275855108896,
-        "energy_unit": "hartree"
+        "epsilon": 1.4493191914029069,
+        "epsilon (in hartree)": 1.4493191914029069
     },
     {
         "tau": 0.0,
-        "r": 8.0,
-        "epsilon": 43.488828991663745,
-        "energy_unit": "hartree"
+        "r": 10.0,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
     },
     {
-        "tau": 1.0,
+        "tau": 0.0,
+        "r": 15.0,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
+    },
+    {
+        "tau": 0.0,
+        "r": 20.0,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
+    },
+    {
+        "tau": 5.0,
         "r": 1.0,
-        "epsilon": 0.9999999584829198,
-        "energy_unit": "hartree"
+        "epsilon": -0.6844014016205395,
+        "epsilon (in hartree)": -0.6844014016205395
     },
     {
-        "tau": 1.0,
+        "tau": 5.0,
         "r": 2.0,
-        "epsilon": 0.210137444080408,
-        "energy_unit": "hartree"
+        "epsilon": -9.165422591652357,
+        "epsilon (in hartree)": -9.165422591652357
     },
     {
-        "tau": 1.0,
-        "r": 3.0,
-        "epsilon": 0.9579170508881643,
-        "energy_unit": "hartree"
-    },
-    {
-        "tau": 1.0,
-        "r": 4.0,
-        "epsilon": 0.9999631163552117,
-        "energy_unit": "hartree"
-    },
-    {
-        "tau": 1.0,
+        "tau": 5.0,
         "r": 5.0,
-        "epsilon": 1.0,
-        "energy_unit": "hartree"
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
     },
     {
-        "tau": 1.0,
-        "r": 6.0,
-        "epsilon": 5.375748915788347,
-        "energy_unit": "hartree"
-    },
-    {
-        "tau": 1.0,
+        "tau": 5.0,
         "r": 7.0,
-        "epsilon": 0.5580103069725492,
-        "energy_unit": "hartree"
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
     },
     {
-        "tau": 1.0,
-        "r": 8.0,
-        "epsilon": 85.45263152549013,
-        "energy_unit": "hartree"
+        "tau": 5.0,
+        "r": 10.0,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
     },
     {
-        "tau": 2.0,
+        "tau": 5.0,
+        "r": 15.0,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
+    },
+    {
+        "tau": 5.0,
+        "r": 20.0,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
+    },
+    {
+        "tau": 10.0,
         "r": 1.0,
-        "epsilon": 3.673657872425452,
-        "energy_unit": "hartree"
+        "epsilon": -5.397930778050884,
+        "epsilon (in hartree)": -5.397930778050884
     },
     {
-        "tau": 2.0,
+        "tau": 10.0,
         "r": 2.0,
-        "epsilon": 0.8728260009370057,
-        "energy_unit": "hartree"
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
     },
     {
-        "tau": 2.0,
-        "r": 3.0,
-        "epsilon": 0.9998356322638372,
-        "energy_unit": "hartree"
-    },
-    {
-        "tau": 2.0,
-        "r": 4.0,
-        "epsilon": 1.0000230320545394,
-        "energy_unit": "hartree"
-    },
-    {
-        "tau": 2.0,
+        "tau": 10.0,
         "r": 5.0,
-        "epsilon": 1.0141799159481426,
-        "energy_unit": "hartree"
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
     },
     {
-        "tau": 2.0,
-        "r": 6.0,
-        "epsilon": 0.9702918334212232,
-        "energy_unit": "hartree"
-    },
-    {
-        "tau": 2.0,
+        "tau": 10.0,
         "r": 7.0,
-        "epsilon": -34.785659718267304,
-        "energy_unit": "hartree"
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
     },
     {
-        "tau": 2.0,
-        "r": 8.0,
-        "epsilon": -28.868817236409576,
-        "energy_unit": "hartree"
+        "tau": 10.0,
+        "r": 10.0,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
+    },
+    {
+        "tau": 10.0,
+        "r": 15.0,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
+    },
+    {
+        "tau": 10.0,
+        "r": 20.0,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
     }
 ]

@@ -3,10 +3,13 @@ import json
 import numpy as np
 import os
 from scipy.optimize import fsolve
+from tqdm import tqdm
 from typing import Dict, List
+import warnings
+warnings.filterwarnings("error")
 
-from src.engine.expansion_coefficients.positive_coefficient import coefPlus
-from src.engine.expansion_coefficients.negative_coefficient import coefMinus
+from src.engine.expansion_coefficients.N_15.positive_coefficient import coefPlus
+from src.engine.expansion_coefficients.N_15.negative_coefficient import coefMinus
 from src.engine.couplings import *
 from src.engine.utils.atomic_data import *
 
@@ -18,8 +21,6 @@ class Solver():
         atom2: str,
         tau: List[float],
         r: List[float],
-        epsilon0: float = 1.0,
-        S0: float = -10.0,
         energy_unit: str = 'hartree',
         log_dir: str = './results'
     ) -> None:
@@ -36,7 +37,8 @@ class Solver():
 
         self.tau = tau
         self.r = r
-        self.x0 = [epsilon0, S0]
+        self.epsilon0_list = [-20.0]
+        self.S0_list = [2 * n for n in range(-10, 5)]
         self.energy_unit = energy_unit
 
         self.log_dir = os.path.join(log_dir, self.atom1 + '-' + self.atom2)
@@ -44,24 +46,40 @@ class Solver():
 
         self.grid = self._prepare_grid()
 
-    def solve(self) -> List[float]:
+    def solve(self) -> None:
 
-        for i in range(len(self.grid)):
+        for i in tqdm(range(len(self.grid))):
 
             alpha_ = alpha(self.m1, self.m2, self.q1, self.q2, self.grid[i]['tau'])
             beta_ = beta(self.m1, self.m2, self.q1, self.q2, self.omega1, self.omega2, self.grid[i]['r'])
             gamma_ = gamma(self.m1, self.m2, self.q1, self.q2, self.grid[i]['r'])
             delta_ = delta(self.m1, self.m2, self.q1, self.q2, self.grid[i]['r'])
-            H = ((self.m1 + self.m2) / (self.m1 * self.m2)) * HBAR**2 / 2
+            H_ = ((self.m1 + self.m2) / (self.m1 * self.m2)) * HBAR**2 / 2
 
-            x = fsolve(self.equations, self.x0, args=(alpha_, beta_, gamma_, delta_, H))
+            lowest_epsilon = float('inf')
+            for pair in itertools.product(self.epsilon0_list, self.S0_list):
 
-            self.grid[i]['epsilon'] = x[0] * ENERGY_UNIT_CONVERSION_FACTOR[self.energy_unit]
-            self.grid[i]['energy_unit'] = self.energy_unit
-            #self.grid[i]['S'] = x[1]
+                epsilon0 = pair[0]
+                S0 = pair[1]
+                x0 = [epsilon0, S0]
 
-        self._dump_json()
-        self._dump_numpy()
+                try:
+                    x = fsolve(self.equations, x0, args=(alpha_, beta_, gamma_, delta_, H_))
+
+                except RuntimeWarning:
+                    continue
+
+                epsilon = x[0]
+                S = x[1]
+
+                if epsilon < lowest_epsilon:
+                    lowest_epsilon = epsilon
+
+            self.grid[i]['epsilon'] = lowest_epsilon
+            self.grid[i]['epsilon (in {})'.format(self.energy_unit)] = self.grid[i]['epsilon'] * ENERGY_UNIT_CONVERSION_FACTOR[self.energy_unit]
+
+            self._dump_json()
+        self._dump_numpy_for_latex()
 
     def equations(
         self,
@@ -113,10 +131,10 @@ class Solver():
         with open(os.path.join(self.log_dir, 'results.json'), 'w') as f:
             json.dump(self.grid, f, indent=4)
 
-    def _dump_numpy(self) -> None:
+    def _dump_numpy_for_latex(self) -> None:
         r'''Saves the output data in a txt file, nicely formatted for latex tables.
         The first column are the various values of the distance r.
-        The first line are the various values of the external field $\tau$.
+        The top left value is set to 0 and is totally irrelevant, just here for formatting reasons.
         '''
 
         energy_array = np.zeros(shape=(len(self.tau) * len(self.r),))
