@@ -1,9 +1,9 @@
 [
     {
-        "tau": 1.0,
-        "r": 6.0,
-        "S": Infinity,
-        "epsilon": Infinity,
-        "epsilon (in hartree)": Infinity
+        "tau": 0.0,
+        "r": 4.0,
+        "S": -0.0336891534959879,
+        "epsilon": 0.4237131621171315,
+        "epsilon (in hartree)": 0.4237131621171315
     }
 ]

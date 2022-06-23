@@ -1,0 +1,212 @@
+[
+    {
+        "tau": 0.0,
+        "r": 1.0,
+        "S": 0.2139402317387973,
+        "epsilon": 0.831084135757806,
+        "epsilon (in hartree)": 0.831084135757806
+    },
+    {
+        "tau": 0.0,
+        "r": 2.0,
+        "S": 0.11830238887312948,
+        "epsilon": 0.27825793587736763,
+        "epsilon (in hartree)": 0.27825793587736763
+    },
+    {
+        "tau": 0.0,
+        "r": 3.0,
+        "S": 0.10399050724436022,
+        "epsilon": 0.13783467911493855,
+        "epsilon (in hartree)": 0.13783467911493855
+    },
+    {
+        "tau": 0.0,
+        "r": 4.0,
+        "S": 0.08543651219104062,
+        "epsilon": 0.08755439323160503,
+        "epsilon (in hartree)": 0.08755439323160503
+    },
+    {
+        "tau": 0.0,
+        "r": 5.0,
+        "S": 0.058961405874963395,
+        "epsilon": 0.06828433829525438,
+        "epsilon (in hartree)": 0.06828433829525438
+    },
+    {
+        "tau": 0.0,
+        "r": 6.0,
+        "S": 0.0291435150353313,
+        "epsilon": 0.06143340886071441,
+        "epsilon (in hartree)": 0.06143340886071441
+    },
+    {
+        "tau": 0.0,
+        "r": 7.0,
+        "S": -0.003453529067380027,
+        "epsilon": 0.06064044466178881,
+        "epsilon (in hartree)": 0.06064044466178881
+    },
+    {
+        "tau": 0.0,
+        "r": 8.0,
+        "S": -0.040002645020362014,
+        "epsilon": 0.06330541631825103,
+        "epsilon (in hartree)": 0.06330541631825103
+    },
+    {
+        "tau": 0.0,
+        "r": 9.0,
+        "S": -0.08214079076304232,
+        "epsilon": 0.06808515381828238,
+        "epsilon (in hartree)": 0.06808515381828238
+    },
+    {
+        "tau": 0.0,
+        "r": 10.0,
+        "S": -0.13149206048135198,
+        "epsilon": 0.07407735991929208,
+        "epsilon (in hartree)": 0.07407735991929208
+    },
+    {
+        "tau": 0.1,
+        "r": 1.0,
+        "S": 0.26409702059274665,
+        "epsilon": 0.8126688695372639,
+        "epsilon (in hartree)": 0.8126688695372639
+    },
+    {
+        "tau": 0.1,
+        "r": 2.0,
+        "S": 0.2766070352061057,
+        "epsilon": 0.23210767955971645,
+        "epsilon (in hartree)": 0.23210767955971645
+    },
+    {
+        "tau": 0.1,
+        "r": 3.0,
+        "S": 0.39833102727254477,
+        "epsilon": 0.041311348011112685,
+        "epsilon (in hartree)": 0.041311348011112685
+    },
+    {
+        "tau": 0.1,
+        "r": 4.0,
+        "S": 0.5272587623106816,
+        "epsilon": -0.08326205666749635,
+        "epsilon (in hartree)": -0.08326205666749635
+    },
+    {
+        "tau": 0.1,
+        "r": 5.0,
+        "S": 0.6649202264952152,
+        "epsilon": -0.20202110871640563,
+        "epsilon (in hartree)": -0.20202110871640563
+    },
+    {
+        "tau": 0.1,
+        "r": 6.0,
+        "S": Infinity,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
+    },
+    {
+        "tau": 0.1,
+        "r": 7.0,
+        "S": Infinity,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
+    },
+    {
+        "tau": 0.1,
+        "r": 8.0,
+        "S": 2.1330186433356486,
+        "epsilon": -2.8108862727085198,
+        "epsilon (in hartree)": -2.8108862727085198
+    },
+    {
+        "tau": 0.1,
+        "r": 9.0,
+        "S": 2.2700074251301054,
+        "epsilon": -3.0381796904415954,
+        "epsilon (in hartree)": -3.0381796904415954
+    },
+    {
+        "tau": 0.1,
+        "r": 10.0,
+        "S": Infinity,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
+    },
+    {
+        "tau": 0.2,
+        "r": 1.0,
+        "S": 0.31437381465823316,
+        "epsilon": 0.7913353138469973,
+        "epsilon (in hartree)": 0.7913353138469973
+    },
+    {
+        "tau": 0.2,
+        "r": 2.0,
+        "S": 0.435154701382417,
+        "epsilon": 0.15730934320488374,
+        "epsilon (in hartree)": 0.15730934320488374
+    },
+    {
+        "tau": 0.2,
+        "r": 3.0,
+        "S": 0.6747065185869149,
+        "epsilon": -0.1421803493662863,
+        "epsilon (in hartree)": -0.1421803493662863
+    },
+    {
+        "tau": 0.2,
+        "r": 4.0,
+        "S": 0.9094871685769446,
+        "epsilon": -0.420133461001804,
+        "epsilon (in hartree)": -0.420133461001804
+    },
+    {
+        "tau": 0.2,
+        "r": 5.0,
+        "S": Infinity,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
+    },
+    {
+        "tau": 0.2,
+        "r": 6.0,
+        "S": Infinity,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
+    },
+    {
+        "tau": 0.2,
+        "r": 7.0,
+        "S": Infinity,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
+    },
+    {
+        "tau": 0.2,
+        "r": 8.0,
+        "S": Infinity,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
+    },
+    {
+        "tau": 0.2,
+        "r": 9.0,
+        "S": Infinity,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
+    },
+    {
+        "tau": 0.2,
+        "r": 10.0,
+        "S": Infinity,
+        "epsilon": Infinity,
+        "epsilon (in hartree)": Infinity
+    }
+]

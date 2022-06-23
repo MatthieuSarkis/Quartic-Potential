@@ -18,7 +18,7 @@ def beta(
     r: float
 ) -> float:
 
-    return ((m1 * m2) / ((m1 + m2)**2)) * ((2 * q1 * q2) / (r**3)) + 0.5 * ((m1 * m2) / (m1 + m2)) * (m1 * omega2**2 + m2 * omega1**1) / (m1 + m2)
+    return ((m1 * m2) / ((m1 + m2)**2)) * ((2 * q1 * q2) / (r**3)) + 0.5 * ((m1 * m2) / (m1 + m2)) * (m1 * omega2**2 + m2 * omega1**2) / (m1 + m2)
 
 def gamma(
     m1: float,
