@@ -37,8 +37,8 @@ class Solver():
 
         self.tau = tau
         self.r = r
-        self.epsilon0_list = [-20.0]
-        self.S0_list = [2 * n for n in range(-10, 5)]
+        self.epsilon0_list = [n for n in range(0, 40, 2)]
+        self.S0_list = [0]
         self.energy_unit = energy_unit
 
         self.log_dir = os.path.join(log_dir, self.atom1 + '-' + self.atom2)
@@ -56,9 +56,10 @@ class Solver():
             delta_ = delta(self.m1, self.m2, self.q1, self.q2, self.grid[i]['r'])
             H_ = ((self.m1 + self.m2) / (self.m1 * self.m2)) * HBAR**2 / 2
 
+            lowest_S = float('inf')
             lowest_epsilon = float('inf')
-            for pair in itertools.product(self.epsilon0_list, self.S0_list):
-
+            for pair in tqdm(itertools.product(self.epsilon0_list, self.S0_list), leave=False):
+                print(pair)
                 epsilon0 = pair[0]
                 S0 = pair[1]
                 x0 = [epsilon0, S0]
@@ -74,7 +75,9 @@ class Solver():
 
                 if epsilon < lowest_epsilon:
                     lowest_epsilon = epsilon
+                    lowest_S = S
 
+            self.grid[i]['S'] = lowest_S
             self.grid[i]['epsilon'] = lowest_epsilon
             self.grid[i]['epsilon (in {})'.format(self.energy_unit)] = self.grid[i]['epsilon'] * ENERGY_UNIT_CONVERSION_FACTOR[self.energy_unit]
 
