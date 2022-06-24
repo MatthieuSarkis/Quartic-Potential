@@ -3,13 +3,14 @@ import json
 import numpy as np
 import os
 from scipy.optimize import fsolve
-from tqdm import tqdm
 from typing import Dict, List
 import warnings
 warnings.filterwarnings("error")
 
 from src.engine.expansion_coefficients.N_15.positive_coefficient import coefPlus
 from src.engine.expansion_coefficients.N_15.negative_coefficient import coefMinus
+from src.engine.expansion_coefficients.N_20.rational_numerator import rational_numerator
+from src.engine.expansion_coefficients.N_20.rational_denominator import rational_denominator
 from src.engine.couplings import *
 from src.engine.utils.atomic_data import *
 
