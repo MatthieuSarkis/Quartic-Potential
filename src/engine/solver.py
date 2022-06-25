@@ -58,17 +58,13 @@ class Solver():
             num_roots = poly.Polynomial.roots(pnum)
             den_roots = poly.Polynomial.roots(pden)
 
-            print(num_roots)
-            exit()
-
             self.grid[i]['energy_spectrum'] = num_roots.tolist()
             self.grid[i]['pole_spectrum'] = den_roots.tolist()
-            #self.grid[i]['energy_spectrum (in {})'.format(self.energy_unit)] = self.grid[i]['epsilon'] * ENERGY_UNIT_CONVERSION_FACTOR[self.energy_unit]
+            self.grid[i]['energy_spectrum (in {})'.format(self.energy_unit)] = (num_roots * ENERGY_UNIT_CONVERSION_FACTOR[self.energy_unit]).tolist()
 
             self._dump_json()
 
         #self._dump_numpy_for_latex()
-
 
 
     def _prepare_grid(self) -> List[Dict[str, float]]:
