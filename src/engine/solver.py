@@ -20,6 +20,7 @@ class Solver():
         tau: List[float],
         r: List[float],
         energy_unit: str = 'hartree',
+        n_eigenvalues: int = 3,
         log_dir: str = './results'
     ) -> None:
 
@@ -36,6 +37,7 @@ class Solver():
         self.tau = tau
         self.r = r
         self.energy_unit = energy_unit
+        self.n_eigenvalues = n_eigenvalues
 
         self.log_dir = os.path.join(log_dir, self.atom1 + '-' + self.atom2)
         os.makedirs(self.log_dir, exist_ok=True)
@@ -55,14 +57,17 @@ class Solver():
             pnum = poly.Polynomial(numerator_coefficients_array(alpha_, beta_, gamma_, delta_, H_))
             pden = poly.Polynomial(denominator_coefficients_array(alpha_, beta_, gamma_, delta_, H_))
 
-            num_roots = poly.Polynomial.roots(pnum)
-            den_roots = poly.Polynomial.roots(pden)
+            num_roots = poly.Polynomial.roots(pnum)[:self.n_eigenvalues]
+            #den_roots = poly.Polynomial.roots(pden)
 
             self.grid[i]['energy_spectrum'] = num_roots.tolist()
-            self.grid[i]['pole_spectrum'] = den_roots.tolist()
-            self.grid[i]['energy_spectrum (in {})'.format(self.energy_unit)] = (num_roots * ENERGY_UNIT_CONVERSION_FACTOR[self.energy_unit]).tolist()
+            #self.grid[i]['pole_spectrum'] = den_roots.tolist()
+            #self.grid[i]['energy_spectrum (in {})'.format(self.energy_unit)] = (num_roots * ENERGY_UNIT_CONVERSION_FACTOR[self.energy_unit]).tolist()
 
-            self._dump_json()
+            try:
+                self._dump_json()
+            except TypeError:
+                print(self.grid[i])
 
         #self._dump_numpy_for_latex()
 
