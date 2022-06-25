@@ -1,58 +1,70 @@
-with open('./archived/output_mathematica/plusNumerator.py', 'r+') as f:
+with open('./src/engine/expansion_coefficients/N_20/numerator/rationalNumerator_coefficients.py', 'w') as f:
 
-    s = f.read()
-    s = '\tv0 = ' + s[1:-1]
+    f.write('import numpy as np\n\n')
 
-    counter = 0
-    counter_variables = 1
 
-    for i in range(len(s)):
-        if counter >= 10000 and s[i]=='+':
-            s = s[:i] + '\n\tv' + str(counter_variables) + ' = ' + s[i+1:]
-            counter = 0
-            counter_variables += 1
-        counter += 1
+for j in range(20):
 
-num = '(' + ''.join(['v' + str(i) + ' + ' for i in range(counter_variables)])[:-3] + ')'
+    with open('./archived/output_mathematica_coefficients/numerator/rationalNumerator_coefficients_{}.py'.format(j), 'r+') as f:
 
-with open('./archived/output_mathematica/plusDenominator.py', 'r+') as f:
+        s = f.read()
+        s = '\tv0 = ' + s[1:-1]
 
-    denom = f.read()
-    denom = '(' + denom[1:-1] + ')'
+        counter = 0
+        counter_variables = 1
 
-with open('./src/engine/expansion_coefficients/N_15/positive_coefficient.py', 'w') as f:
+        for i in range(len(s)):
+            if counter >= 10000 and s[i]=='+':
+                s = s[:i] + '\n\tv' + str(counter_variables) + ' = ' + s[i+1:]
+                counter = 0
+                counter_variables += 1
+            counter += 1
 
-    f.write('import numpy as np\n\ndef coefPlus(\n\tepsilon: float,\n\tS: float,\n\talpha: float,\n\tbeta: float,\n\tgamma: float,\n\tdelta: float,\n\tH: float\n) -> float:\n\n')
-    f.write(s)
-    f.write('\n\n')
-    f.write('\treturn ' + num + ' / ' + denom)
+    num = '(' + ''.join(['v' + str(i) + ' + ' for i in range(counter_variables)])[:-3] + ')'
 
-with open('./archived/output_mathematica/minusNumerator.py', 'r+') as f:
+    with open('./src/engine/expansion_coefficients/N_20/numerator/rationalNumerator_coefficients.py', 'a') as f:
 
-    s = f.read()
-    s = '\tv0 = ' + s[1:-1]
+        f.write('def num_coef_degree_{}(\n\talpha: float,\n\tbeta: float,\n\tgamma: float,\n\tdelta: float,\n\tH: float\n) -> float:\n\n'.format(j))
+        f.write(s)
+        f.write('\n\n')
+        f.write('\tcoef = ')
+        f.write(num)
+        f.write('\n\n')
+        f.write('\treturn coef')
+        f.write('\n\n')
 
-    counter = 0
-    counter_variables = 1
 
-    for i in range(len(s)):
-        if counter >= 10000 and s[i]=='+':
-            s = s[:i] + '\n\tv' + str(counter_variables) + ' = ' + s[i+1:]
-            counter = 0
-            counter_variables += 1
+with open('./src/engine/expansion_coefficients/N_20/denominator/rationalDenominator_coefficients.py', 'w') as f:
 
-        counter += 1
+    f.write('import numpy as np\n\n')
 
-num = '(' + ''.join(['v' + str(i) + ' + ' for i in range(counter_variables)])[:-3] + ')'
 
-with open('./archived/output_mathematica/minusDenominator.py', 'r+') as f:
+for j in range(10):
 
-    denom = f.read()
-    denom = '(' + denom[1:-1] + ')'
+    with open('./archived/output_mathematica_coefficients/denominator/rationalDenominator_coefficients_{}.py'.format(j), 'r+') as f:
 
-with open('./src/engine/expansion_coefficients/N_15/negative_coefficient.py', 'w') as f:
+        s = f.read()
+        s = '\tv0 = ' + s[1:-1]
 
-    f.write('import numpy as np\n\ndef coefMinus(\n\tepsilon: float,\n\tS: float,\n\talpha: float,\n\tbeta: float,\n\tgamma: float,\n\tdelta: float,\n\tH: float\n) -> float:\n\n')
-    f.write(s)
-    f.write('\n\n')
-    f.write('\treturn ' + num + ' / ' + denom)
+        counter = 0
+        counter_variables = 1
+
+        for i in range(len(s)):
+            if counter >= 10000 and s[i]=='+':
+                s = s[:i] + '\n\tv' + str(counter_variables) + ' = ' + s[i+1:]
+                counter = 0
+                counter_variables += 1
+            counter += 1
+
+    num = '(' + ''.join(['v' + str(i) + ' + ' for i in range(counter_variables)])[:-3] + ')'
+
+    with open('./src/engine/expansion_coefficients/N_20/denominator/rationalDenominator_coefficients.py', 'a') as f:
+
+        f.write('def den_coef_degree_{}(\n\talpha: float,\n\tbeta: float,\n\tgamma: float,\n\tdelta: float,\n\tH: float\n) -> float:\n\n'.format(j))
+        f.write(s)
+        f.write('\n\n')
+        f.write('\tcoef = ')
+        f.write(num)
+        f.write('\n\n')
+        f.write('\treturn coef')
+        f.write('\n\n')

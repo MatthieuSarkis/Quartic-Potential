@@ -4,7 +4,6 @@
 
 * python 3
 * numpy
-* tqdm
 * ipykernel
 
 ```shell
@@ -19,16 +18,11 @@ pip install -e .
 
 ```shell
 python src/main.py \
-    --m1 1.0 2.0 \
-    --m2 1.0 \
-    --q1 1.0 \
-    --q2 1.0 3.0 \
-    --omega1 1.0 \
-    --omega2 1.0 \
+    --atom1 H \
+    --atom2 H \
     --r 1.0 2.0 2.5 \
-    --tau 1.0 10.0 \
-    --epsilon0 1.0 \
-    --S0 -1.0
+    --tau 1.0 2.0 \
+    --energy_unit hartree
 ```
 
 ## Citation

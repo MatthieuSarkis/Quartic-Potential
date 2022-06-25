@@ -1,16 +1,13 @@
 import itertools
 import json
 import numpy as np
+import numpy.polynomial.polynomial as poly
 import os
-from scipy.optimize import fsolve
 from typing import Dict, List
 import warnings
 warnings.filterwarnings("error")
 
-from src.engine.expansion_coefficients.N_15.positive_coefficient import coefPlus
-from src.engine.expansion_coefficients.N_15.negative_coefficient import coefMinus
-from src.engine.expansion_coefficients.N_20.rational_numerator import rational_numerator
-from src.engine.expansion_coefficients.N_20.rational_denominator import rational_denominator
+from src.engine.expansion_coefficients.N_20.coefficients_array import *
 from src.engine.couplings import *
 from src.engine.utils.atomic_data import *
 
@@ -38,10 +35,6 @@ class Solver():
 
         self.tau = tau
         self.r = r
-        #self.epsilon0_list = [n for n in range(-10, 30)]
-        #self.S0_list = [n for n in range(-20, 20)]
-        self.epsilon0_list = [-10]
-        self.S0_list = [0]
         self.energy_unit = energy_unit
 
         self.log_dir = os.path.join(log_dir, self.atom1 + '-' + self.atom2)
@@ -57,69 +50,26 @@ class Solver():
             beta_ = beta(self.m1, self.m2, self.q1, self.q2, self.omega1, self.omega2, self.grid[i]['r'])
             gamma_ = gamma(self.m1, self.m2, self.q1, self.q2, self.grid[i]['r'])
             delta_ = delta(self.m1, self.m2, self.q1, self.q2, self.grid[i]['r'])
-            H_ = ((self.m1 + self.m2) / (self.m1 * self.m2)) * HBAR**2 / 2
+            H_ = np.sqrt(((self.m1 + self.m2) / (self.m1 * self.m2)) * HBAR**2 / 2)
 
-            lowest_S = float('inf')
-            lowest_epsilon = float('inf')
-            for pair in itertools.product(self.epsilon0_list, self.S0_list):
+            pnum = poly.Polynomial(numerator_coefficients_array(alpha_, beta_, gamma_, delta_, H_))
+            pden = poly.Polynomial(denominator_coefficients_array(alpha_, beta_, gamma_, delta_, H_))
 
-                #print(pair)
+            num_roots = poly.Polynomial.roots(pnum)
+            den_roots = poly.Polynomial.roots(pden)
 
-                epsilon0 = pair[0]
-                S0 = pair[1]
-                x0 = [epsilon0, S0]
+            print(num_roots)
+            exit()
 
-                try:
-                    x = fsolve(self.equations, x0, args=(alpha_, beta_, gamma_, delta_, H_))
-
-                except RuntimeWarning:
-                    continue
-
-                epsilon = x[0]
-                S = x[1]
-
-                if epsilon < lowest_epsilon:
-                    lowest_epsilon = epsilon
-                    lowest_S = S
-
-            self.grid[i]['S'] = lowest_S
-            self.grid[i]['epsilon'] = lowest_epsilon
-            self.grid[i]['epsilon (in {})'.format(self.energy_unit)] = self.grid[i]['epsilon'] * ENERGY_UNIT_CONVERSION_FACTOR[self.energy_unit]
+            self.grid[i]['energy_spectrum'] = num_roots.tolist()
+            self.grid[i]['pole_spectrum'] = den_roots.tolist()
+            #self.grid[i]['energy_spectrum (in {})'.format(self.energy_unit)] = self.grid[i]['epsilon'] * ENERGY_UNIT_CONVERSION_FACTOR[self.energy_unit]
 
             self._dump_json()
-        self._dump_numpy_for_latex()
 
-    def equations(
-        self,
-        x: np.ndarray,
-        alpha: float,
-        beta: float,
-        gamma: float,
-        delta: float,
-        H: float
-    ) -> np.ndarray:
+        #self._dump_numpy_for_latex()
 
-        equation0 = coefPlus(
-            epsilon=x[0],
-            S=x[1],
-            alpha=alpha,
-            beta=beta,
-            gamma=gamma,
-            delta=delta,
-            H=H
-        )
 
-        equation1 = coefMinus(
-            epsilon=x[0],
-            S=x[1],
-            alpha=alpha,
-            beta=beta,
-            gamma=gamma,
-            delta=delta,
-            H=H
-        )
-
-        return [equation0, equation1]
 
     def _prepare_grid(self) -> List[Dict[str, float]]:
 
