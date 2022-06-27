@@ -57,7 +57,7 @@ class Solver():
             pnum = poly.Polynomial(numerator_coefficients_array(alpha_, beta_, gamma_, delta_, H_))
             pden = poly.Polynomial(denominator_coefficients_array(alpha_, beta_, gamma_, delta_, H_))
 
-            num_roots = poly.Polynomial.roots(pnum)[:self.n_eigenvalues]
+            num_roots = poly.Polynomial.roots(pnum)[:self.n_eigenvalues].real
             #den_roots = poly.Polynomial.roots(pden)
 
             self.grid[i]['energy_spectrum'] = num_roots.tolist()
@@ -69,7 +69,7 @@ class Solver():
             except TypeError:
                 print(self.grid[i])
 
-        #self._dump_numpy_for_latex()
+        self._dump_numpy_for_latex_2()
 
 
     def _prepare_grid(self) -> List[Dict[str, float]]:
@@ -90,9 +90,10 @@ class Solver():
         with open(os.path.join(self.log_dir, 'results.json'), 'w') as f:
             json.dump(self.grid, f, indent=4)
 
-    def _dump_numpy_for_latex(self) -> None:
+    def _dump_numpy_for_latex_1(self) -> None:
         r'''Saves the output data in a txt file, nicely formatted for latex tables.
         The first column are the various values of the distance r.
+        The first line are the various values of the external electric field strength.
         The top left value is set to 0 and is totally irrelevant, just here for formatting reasons.
         '''
 
@@ -107,3 +108,20 @@ class Solver():
         energy_array = np.concatenate((tau, energy_array), axis=0)
 
         np.savetxt(os.path.join(self.log_dir, "r_vs_tau_table.txt"), energy_array, delimiter=' & ', fmt='%f', newline=' \\\\\n')
+
+    def _dump_numpy_for_latex_2(self) -> None:
+        r'''Saves the output data in a txt file, nicely formatted for latex tables.
+        The first column are the various values of the distance r.
+        The the variou
+        The top left value is set to 0 and is totally irrelevant, just here for formatting reasons.
+        '''
+
+        energy_array = np.zeros(shape=(len(self.r), 3))
+        for i in range(len(self.grid)):
+            for j in range(3):
+                energy_array[i][j] = self.grid[i]["energy_spectrum"][j]
+
+        r = np.array(self.r).reshape((-1, 1))
+        energy_array = np.concatenate((r, energy_array), axis=1)
+
+        np.savetxt(os.path.join(self.log_dir, "spectrum_table.txt"), energy_array, delimiter=' & ', fmt='%f', newline=' \\\\\n')
