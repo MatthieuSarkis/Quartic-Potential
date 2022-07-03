@@ -55,7 +55,7 @@ class Solver():
             H_ = np.sqrt(((self.m1 + self.m2) / (self.m1 * self.m2)) * HBAR**2 / 2)
 
             pnum = poly.Polynomial(numerator_coefficients_array(alpha_, beta_, gamma_, delta_, H_))
-            pden = poly.Polynomial(denominator_coefficients_array(alpha_, beta_, gamma_, delta_, H_))
+            #pden = poly.Polynomial(denominator_coefficients_array(alpha_, beta_, gamma_, delta_, H_))
 
             num_roots = poly.Polynomial.roots(pnum)[:self.n_eigenvalues].real
             #den_roots = poly.Polynomial.roots(pden)
@@ -69,7 +69,8 @@ class Solver():
             except TypeError:
                 print(self.grid[i])
 
-        self._dump_numpy_for_latex_2()
+        self._dump_numpy_for_latex_1()
+        #self._dump_numpy_for_latex_2()
 
 
     def _prepare_grid(self) -> List[Dict[str, float]]:
@@ -99,7 +100,7 @@ class Solver():
 
         energy_array = np.zeros(shape=(len(self.tau) * len(self.r),))
         for i in range(len(self.grid)):
-            energy_array[i] = self.grid[i]['epsilon']
+            energy_array[i] = self.grid[i]['energy_spectrum'][0]
 
         energy_array = energy_array.reshape((len(self.tau), len(self.r))).T
         r = np.array(self.r).reshape((-1, 1))

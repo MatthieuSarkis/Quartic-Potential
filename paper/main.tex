@@ -34,14 +34,9 @@ Department of Physics and Materials Science\\ University of Luxembourg, L-1511, 
 \date{\today}
 
 \begin{abstract}
-Abstract
-%\begin{description}
-%\item[Usage]
-%Secondary publications and information retrieval purposes.
-%\item[Structure]
-%You may use the \texttt{description} environment to structure your abstract;
-%use the optional argument of the \verb+\item+ command to give the category of each item.
-%\end{description}
+
+    We compute the energy spectrum of a system consiting of a pair of Quantum Drude Oscillators coupled through the Coulomb interaction up to Quadrupole-Quadrupole and Dipole-Octupole order in the multipolar expansion by re-expressing the Schr\"odinger equation in terms of a tri-confluent Heun equation.
+
 \end{abstract}
 
 %\keywords{Suggested keywords}%Use showkeys class option if keyword
@@ -226,8 +221,10 @@ Abstract
 
 \section{Results}
 
+\subsection{First few energy levels}
+
     \begin{table}[h!]
-    \caption{\label{tab:Ar-Ar} Energy spectrum (in Ha) of the Ar-Ar system}
+    \caption{\label{tab:external_field_Ar-Ar} Energy spectrum (in Ha) of the Ar-Ar system}
     \begin{ruledtabular}
     \begin{tabular}{c|ccc}
         \diagbox[height=1.8\line]{$r$ (a.u.)}{spectrum}& $\epsilon_0$ & $\epsilon_1$ & $\epsilon_2$ \\
@@ -243,7 +240,7 @@ Abstract
     \end{table}
 
     \begin{table}[h!]
-    \caption{\label{tab:Cs-Cs} Energy spectrum (in Ha) of the Cs-Cs system}
+    \caption{\label{tab:external_field_Cs-Cs} Energy spectrum (in Ha) of the Cs-Cs system}
     \begin{ruledtabular}
     \begin{tabular}{c|ccc}
         \diagbox[height=1.8\line]{$r$ (a.u.)}{spectrum}& $\epsilon_0$ & $\epsilon_1$ & $\epsilon_2$ \\
@@ -259,7 +256,7 @@ Abstract
     \end{table}
 
     \begin{table}[h!]
-    \caption{\label{tab:H-H} Energy spectrum (in Ha) of the H-H system}
+    \caption{\label{tab:external_field_H-H} Energy spectrum (in Ha) of the H-H system}
     \begin{ruledtabular}
     \begin{tabular}{c|ccc}
         \diagbox[height=1.8\line]{$r$ (a.u.)}{spectrum}& $\epsilon_0$ & $\epsilon_1$ & $\epsilon_2$ \\
@@ -275,7 +272,7 @@ Abstract
     \end{table}
 
     \begin{table}[h!]
-    \caption{\label{tab:He-He} Energy spectrum (in Ha) of the He-He system}
+    \caption{\label{tab:external_field_He-He} Energy spectrum (in Ha) of the He-He system}
     \begin{ruledtabular}
     \begin{tabular}{c|ccc}
         \diagbox[height=1.8\line]{$r$ (a.u.)}{spectrum}& $\epsilon_0$ & $\epsilon_1$ & $\epsilon_2$ \\
@@ -291,7 +288,7 @@ Abstract
     \end{table}
 
     \begin{table}[h!]
-    \caption{\label{tab:K-K} Energy spectrum (in Ha) of the K-K system}
+    \caption{\label{tab:external_field_K-K} Energy spectrum (in Ha) of the K-K system}
     \begin{ruledtabular}
     \begin{tabular}{c|ccc}
         \diagbox[height=1.8\line]{$r$ (a.u.)}{spectrum}& $\epsilon_0$ & $\epsilon_1$ & $\epsilon_2$ \\
@@ -307,7 +304,7 @@ Abstract
     \end{table}
 
     \begin{table}[h!]
-    \caption{\label{tab:Kr-Kr} Energy spectrum (in Ha) of the Kr-Kr system}
+    \caption{\label{tab:external_field_Kr-Kr} Energy spectrum (in Ha) of the Kr-Kr system}
     \begin{ruledtabular}
     \begin{tabular}{c|ccc}
         \diagbox[height=1.8\line]{$r$ (a.u.)}{spectrum}& $\epsilon_0$ & $\epsilon_1$ & $\epsilon_2$ \\
@@ -323,7 +320,7 @@ Abstract
     \end{table}
 
     \begin{table}[h!]
-    \caption{\label{tab:Li-Li} Energy spectrum (in Ha) of the Li-Li system}
+    \caption{\label{tab:external_field_Li-Li} Energy spectrum (in Ha) of the Li-Li system}
     \begin{ruledtabular}
     \begin{tabular}{c|ccc}
         \diagbox[height=1.8\line]{$r$ (a.u.)}{spectrum}& $\epsilon_0$ & $\epsilon_1$ & $\epsilon_2$ \\
@@ -339,7 +336,7 @@ Abstract
     \end{table}
 
     \begin{table}[h!]
-    \caption{\label{tab:Ne-Ne} Energy spectrum (in Ha) of the Ne-Ne system}
+    \caption{\label{tab:external_field_Ne-Ne} Energy spectrum (in Ha) of the Ne-Ne system}
     \begin{ruledtabular}
     \begin{tabular}{c|ccc}
         \diagbox[height=1.8\line]{$r$ (a.u.)}{spectrum}& $\epsilon_0$ & $\epsilon_1$ & $\epsilon_2$ \\
@@ -355,7 +352,7 @@ Abstract
     \end{table}
 
     \begin{table}[h!]
-    \caption{\label{tab:Rb-Rb} Energy spectrum (in Ha) of the Rb-Rb system}
+    \caption{\label{tab:external_field_Rb-Rb} Energy spectrum (in Ha) of the Rb-Rb system}
     \begin{ruledtabular}
     \begin{tabular}{c|ccc}
         \diagbox[height=1.8\line]{$r$ (a.u.)}{spectrum}& $\epsilon_0$ & $\epsilon_1$ & $\epsilon_2$ \\
@@ -371,7 +368,7 @@ Abstract
     \end{table}
 
     \begin{table}[h!]
-    \caption{\label{tab:Xe-Xe} Energy spectrum (in Ha) of the Xe-Xe system}
+    \caption{\label{tab:external_field_Xe-Xe} Energy spectrum (in Ha) of the Xe-Xe system}
     \begin{ruledtabular}
     \begin{tabular}{c|ccc}
         \diagbox[height=1.8\line]{$r$ (a.u.)}{spectrum}& $\epsilon_0$ & $\epsilon_1$ & $\epsilon_2$ \\
@@ -386,9 +383,167 @@ Abstract
     \end{ruledtabular}
     \end{table}
 
+\subsection{Ground state energy $r$ vs. $\mathcal E$}
 
+    \begin{table}[h!]
+    \caption{\label{tab:Ar-Ar} Ground state energy (in Ha) of the Ar-Ar system}
+    \begin{ruledtabular}
+    \begin{tabular}{c|ccc}
+        \diagbox[height=1.8\line]{$r$ (a.u.)}{$\mathcal E$ (a.u.)}& 0.0 & 1.0 & 2.0 \\
+        \hline\\[-0.8em]
+        0.5 & 9.247342 & 9.110717 & 8.952432 \\
+        1.0 & 2.981229 & 2.633184 & 2.076356 \\
+        1.5 & 1.563464 & 0.829677 & -0.591543 \\
+        2.0 & 1.023301 & -0.325559 & -2.992697 \\
+        2.5 & 0.748161 & -1.377726 & -5.452778 \\
+        3.0 & 0.590991 & -2.381467 & -7.976320 \\
+    \end{tabular}
+    \end{ruledtabular}
+    \end{table}
 
+    \begin{table}[h!]
+    \caption{\label{tab:Cs-Cs} Ground state energy (in Ha) of the Cs-Cs system}
+    \begin{ruledtabular}
+    \begin{tabular}{c|ccc}
+        \diagbox[height=1.8\line]{$r$ (a.u.)}{$\mathcal E$ (a.u.)}& 0.0 & 1.0 & 2.0 \\
+        \hline\\[-0.8em]
+        0.5 & 4.076335 & 3.980857 & 3.863462 \\
+        1.0 & 1.307214 & 1.035551 & 0.558141 \\
+        1.5 & 0.673427 & 0.042066 & -1.194431 \\
+        2.0 & 0.426306 & -0.786686 & -3.026094 \\
+        2.5 & 0.296956 & -1.655817 & -5.032131 \\
+        3.0 & 0.217699 & -2.584558 & -7.136808 \\
+    \end{tabular}
+    \end{ruledtabular}
+    \end{table}
 
+    \begin{table}[h!]
+    \caption{\label{tab:H-H} Ground state energy (in Ha) of the H-H system}
+    \begin{ruledtabular}
+    \begin{tabular}{c|ccc}
+        \diagbox[height=1.8\line]{$r$ (a.u.)}{$\mathcal E$ (a.u.)}& 0.0 & 1.0 & 2.0 \\
+        \hline\\[-0.8em]
+        0.5 & 3.757546 & 3.680220 & 3.584748 \\
+        1.0 & 1.213930 & 0.994879 & 0.606484 \\
+        1.5 & 0.649664 & 0.155212 & -0.841764 \\
+        2.0 & 0.436524 & -0.467646 & -2.247426 \\
+        2.5 & 0.330635 & -1.037533 & -3.672527 \\
+        3.0 & 0.279296 & -1.563088 & -5.125057 \\
+    \end{tabular}
+    \end{ruledtabular}
+    \end{table}
+
+    \begin{table}[h!]
+    \caption{\label{tab:He-He} Ground state energy (in Ha) of the He-He system}
+    \begin{ruledtabular}
+    \begin{tabular}{c|ccc}
+        \diagbox[height=1.8\line]{$r$ (a.u.)}{$\mathcal E$ (a.u.)}& 0.0 & 1.0 & 2.0 \\
+        \hline\\[-0.8em]
+        0.5 & 4.838555 & 4.747673 & 4.637588 \\
+        1.0 & 1.609674 & 1.370517 & 0.955271 \\
+        1.5 & 0.928052 & 0.449201 & -0.551122 \\
+        2.0 & 0.690066 & -0.067148 & -1.750946 \\
+        2.5 & 0.597424 & -0.386765 & -2.715690 \\
+        3.0 & 0.607965 & -0.544976 & -3.452658 \\
+    \end{tabular}
+    \end{ruledtabular}
+    \end{table}
+
+    \begin{table}[h!]
+    \caption{\label{tab:K-K} Ground state energy (in Ha) of the K-K system}
+    \begin{ruledtabular}
+    \begin{tabular}{c|ccc}
+        \diagbox[height=1.8\line]{$r$ (a.u.)}{$\mathcal E$ (a.u.)}& 0.0 & 1.0 & 2.0 \\
+        \hline\\[-0.8em]
+        0.5 & 3.900846 & 3.798718 & 3.672463 \\
+        1.0 & 1.254074 & 0.961731 & 0.444593 \\
+        1.5 & 0.646062 & -0.035078 & -1.362536 \\
+        2.0 & 0.409452 & -0.892356 & -3.275553 \\
+        2.5 & 0.286775 & -1.798818 & -5.377141 \\
+        3.0 & 0.211508 & -2.769875 & -7.827196 \\
+    \end{tabular}
+    \end{ruledtabular}
+    \end{table}
+
+    \begin{table}[h!]
+    \caption{\label{tab:Kr-Kr} Ground state energy (in Ha) of the Kr-Kr system}
+    \begin{ruledtabular}
+    \begin{tabular}{c|ccc}
+        \diagbox[height=1.8\line]{$r$ (a.u.)}{$\mathcal E$ (a.u.)}& 0.0 & 1.0 & 2.0 \\
+        \hline\\[-0.8em]
+        0.5 & 9.936548 & 9.795814 & 9.633507 \\
+        1.0 & 3.196890 & 2.840242 & 2.274883 \\
+        1.5 & 1.666467 & 0.914564 & -0.532113 \\
+        2.0 & 1.078692 & -0.316154 & -3.056110 \\
+        2.5 & 0.776461 & -1.455630 & -5.674813 \\
+        3.0 & 0.599348 & -2.572968 & -8.404424 \\
+    \end{tabular}
+    \end{ruledtabular}
+    \end{table}
+
+    \begin{table}[h!]
+    \caption{\label{tab:Li-Li} Ground state energy (in Ha) of the Li-Li system}
+    \begin{ruledtabular}
+    \begin{tabular}{c|ccc}
+        \diagbox[height=1.8\line]{$r$ (a.u.)}{$\mathcal E$ (a.u.)}& 0.0 & 1.0 & 2.0 \\
+        \hline\\[-0.8em]
+        0.5 & 2.989579 & 2.886101 & 2.754734 \\
+        1.0 & 0.965106 & 0.657280 & 0.096843 \\
+        1.5 & 0.498061 & -0.231815 & -1.636857 \\
+        2.0 & 0.316132 & -1.061981 & -3.526222 \\
+        2.5 & 0.223280 & -1.953835 & -5.616848 \\
+        3.0 & 0.166518 & -2.914737 & -11.972520 \\
+    \end{tabular}
+    \end{ruledtabular}
+    \end{table}
+
+    \begin{table}[h!]
+    \caption{\label{tab:Ne-Ne} Ground state energy (in Ha) of the Ne-Ne system}
+    \begin{ruledtabular}
+    \begin{tabular}{c|ccc}
+        \diagbox[height=1.8\line]{$r$ (a.u.)}{$\mathcal E$ (a.u.)}& 0.0 & 1.0 & 2.0 \\
+        \hline\\[-0.8em]
+        0.5 & 8.067324 & 7.938880 & 7.788706 \\
+        1.0 & 2.648128 & 2.324114 & 1.795116 \\
+        1.5 & 1.463214 & 0.814542 & -0.481886 \\
+        2.0 & 1.037985 & -0.043649 & -2.342096 \\
+        2.5 & 0.839105 & -0.668123 & -3.988911 \\
+        3.0 & 0.769833 & -1.095276 & -5.406152 \\
+    \end{tabular}
+    \end{ruledtabular}
+    \end{table}
+
+    \begin{table}[h!]
+    \caption{\label{tab:Rb-Rb} Ground state energy (in Ha) of the Rb-Rb system}
+    \begin{ruledtabular}
+    \begin{tabular}{c|ccc}
+        \diagbox[height=1.8\line]{$r$ (a.u.)}{$\mathcal E$ (a.u.)}& 0.0 & 1.0 & 2.0 \\
+        \hline\\[-0.8em]
+        0.5 & 4.031874 & 3.933375 & 3.812070 \\
+        1.0 & 1.294297 & 1.013631 & 0.519442 \\
+        1.5 & 0.666759 & 0.014231 & -1.261255 \\
+        2.0 & 0.422361 & -0.828604 & -3.131122 \\
+        2.5 & 0.294937 & -1.715198 & -5.181182 \\
+        3.0 & 0.216807 & -2.663303 & -7.510481 \\
+    \end{tabular}
+    \end{ruledtabular}
+    \end{table}
+
+    \begin{table}[h!]
+    \caption{\label{tab:Xe-Xe} Ground state energy (in Ha) of the Xe-Xe system}
+    \begin{ruledtabular}
+    \begin{tabular}{c|ccc}
+        \diagbox[height=1.8\line]{$r$ (a.u.)}{$\mathcal E$ (a.u.)}& 0.0 & 1.0 & 2.0 \\
+        \hline\\[-0.8em]
+        0.5 & 10.472412 & 10.333027 & 10.172863 \\
+        1.0 & 3.360994 & 3.008892 & 2.455036 \\
+        1.5 & 1.743863 & 1.001161 & -0.421036 \\
+        2.0 & 1.117696 & -0.272030 & -2.991068 \\
+        2.5 & 0.792188 & -1.461408 & -5.680509 \\
+        3.0 & 0.598300 & -2.651579 & -8.519189 \\
+    \end{tabular}
+    \end{ruledtabular}
+    \end{table}
 
 
 
@@ -401,8 +556,14 @@ Abstract
 
     \begin{figure}[h!]
         \centering
-            \includegraphics[scale=0.33]{plus_minus_coefs}
-            \caption{\label{fig:coefs} Intersection loci of the three surfaces $z=c^+_{20}(\epsilon, s)$ and $z=c^-_{20}(\epsilon, s)$ and $z=0$. The purple dots correspond to the first excited states of the H-H system for $r=4$ and $\mathcal E=0$.}
+            \includegraphics[scale=0.33]{plus_minus_coefs_tau0_r2_HH}
+            \caption{\label{fig:coefs} Intersection loci of the three surfaces $z=c^+_{20}(\epsilon, s)$ and $z=c^-_{20}(\epsilon, s)$ and $z=0$. The purple dots correspond to the first 5 excited states of the H-H system for $r=2$ and $\mathcal E=0$.}
+    \end{figure}
+
+    \begin{figure}[h!]
+        \centering
+            \includegraphics[scale=0.33]{rational_tau0_r2_HH}
+            \caption{\label{fig:rational} Plot of  $z=c^+_{20}(\epsilon, s(\epsilon))$ for the H-H system at $r=2$ and $\mathcal E=0$. The zeros are denoted by purple dots and correspond to the first excited states of the system.}
     \end{figure}
 
 
