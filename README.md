@@ -12,7 +12,7 @@ pip install -e .
 
 ## QDOs
 
-![Two interecting Quantum Drude Oscillators](./paper/assets/figures/diagram-20220619.png "Two interecting Quantum Drude Oscillators")
+![Two interecting Quantum Drude Oscillators](./assets/diagram-20220619.png "Two interecting Quantum Drude Oscillators")
 
 ## Usage
 
