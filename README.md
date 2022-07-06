@@ -4,7 +4,6 @@
 
 * python 3
 * numpy
-* ipykernel
 
 ```shell
 pip install -e .

@@ -7,9 +7,9 @@ from typing import Dict, List
 import warnings
 warnings.filterwarnings("error")
 
-from src.engine.expansion_coefficients.N_20.coefficients_array import *
-from src.engine.couplings import *
-from src.engine.utils.atomic_data import *
+from src.expansion_coefficients.N_20.coefficients_array import *
+from src.couplings import *
+from src.utils.atomic_data import *
 
 class Solver():
 

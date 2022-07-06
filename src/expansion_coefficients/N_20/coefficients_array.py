@@ -1,7 +1,7 @@
 import numpy as np
 
-from src.engine.expansion_coefficients.N_20.numerator.rationalNumerator_coefficients import *
-from src.engine.expansion_coefficients.N_20.denominator.rationalDenominator_coefficients import *
+from src.expansion_coefficients.N_20.numerator.rationalNumerator_coefficients import *
+from src.expansion_coefficients.N_20.denominator.rationalDenominator_coefficients import *
 
 def numerator_coefficients_array(
 	alpha: float,

@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 import os
 
-from src.engine.solver import Solver
+from src.solver import Solver
 
 def main(args) -> None:
 

@@ -1,14 +1,5 @@
-from typing import Tuple
-
 # The engine runs with atomic units, in which \hbar = 1.
 HBAR = 1.0
-
-# Obtained from "Quantum Drude Oscillators for Accurate Many-body Intermolecular Forces"
-DISPERSION_PARAMETERS = {
-    'H': {'alpha': 4.5, 'C6': 6.49, 'C8': 124.5},
-    'He': {'alpha': 1.38, 'C6': 1.46, 'C8': 14.05},
-    'Ne': {'alpha': 2.66, 'C6': 6.88, 'C8': 76},
-}
 
 # Obtained from "Quantum Drude oscillator model of atoms and molecules: Many-body polarization and dispersion interactions for atomistic simulation"
 # Those quantities are in atomic units (q_e = 1, m_e = 1, hbar = 1, Energy in Hartree)
@@ -35,39 +26,3 @@ ENERGY_UNIT_CONVERSION_FACTOR = {
     'J': 43.60e-19,
     'Hz': 6.57966e15,
 }
-
-def m(
-    alpha: float,
-    C6: float,
-    C8: float
-) -> float:
-
-    return (15 * HBAR**2 * alpha**2) / (4 * C8)
-
-def q(
-    alpha: float,
-    C6: float,
-    C8: float
-) -> float:
-
-    return 2 * (5 / 3)**0.5 * (C6**2 / (C8 * alpha))**2
-
-def omega(
-    alpha: float,
-    C6: float,
-    C8: float
-) -> float:
-
-    return (4 * C6) / (3 * HBAR * alpha**2)
-
-def compute_QDO_parameters(
-    atom_type: str = 'H'
-) -> Tuple[float, float, float]:
-
-    atom = DISPERSION_PARAMETERS[atom_type]
-
-    mass = m(alpha=atom['alpha'], C6=atom['C6'], C8=atom['C8'])
-    charge = q(alpha=atom['alpha'], C6=atom['C6'], C8=atom['C8'])
-    frequency = omega(alpha=atom['alpha'], C6=atom['C6'], C8=atom['C8'])
-
-    return mass, charge, frequency
