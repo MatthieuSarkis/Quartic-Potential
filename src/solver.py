@@ -39,12 +39,18 @@ class Solver():
         self.energy_unit = energy_unit
         self.n_eigenvalues = n_eigenvalues
 
+        if n_eigenvalues==1:
+            self.ground = []
+
         self.log_dir = os.path.join(log_dir, self.atom1 + '-' + self.atom2)
         os.makedirs(self.log_dir, exist_ok=True)
 
         self.grid = self._prepare_grid()
 
     def solve(self) -> None:
+
+        if self.n_eigenvalues==1:
+            self.ground=[]
 
         for i in range(len(self.grid)):
 
@@ -58,10 +64,24 @@ class Solver():
             num_roots = poly.Polynomial.roots(pnum)[:self.n_eigenvalues].real
             self.grid[i]['energy_spectrum (in {})'.format(self.energy_unit)] = (num_roots * ENERGY_UNIT_CONVERSION_FACTOR[self.energy_unit]).tolist()
 
+            if self.n_eigenvalues==1:
+                try:
+                    self.ground.append(num_roots[0])
+                except IndexError:
+                    print(self.grid[i]['r'])
+
             try:
                 self._dump_json()
             except TypeError:
                 print(self.grid[i])
+
+            r = np.array(self.r)
+            epsilon = np.array(self.ground)
+            with open(os.path.join(self.log_dir, 'r.npy'), 'wb') as f:
+                np.save(f, r)
+            with open(os.path.join(self.log_dir, 'epsilon.npy'), 'wb') as f:
+                np.save(f, epsilon)
+
 
     def _prepare_grid(self) -> List[Dict[str, float]]:
 
